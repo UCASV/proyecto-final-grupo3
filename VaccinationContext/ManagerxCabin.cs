@@ -9,6 +9,7 @@ namespace ProyectoVacunacionCovid.VaccinationContext
     {
         public int IdManager { get; set; }
         public int IdCabin { get; set; }
+        public DateTime DatetimeLogin { get; set; }
 
         public virtual Cabin IdCabinNavigation { get; set; }
         public virtual Manager IdManagerNavigation { get; set; }

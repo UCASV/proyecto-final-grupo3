@@ -9,18 +9,12 @@ namespace ProyectoVacunacionCovid.VaccinationContext
     {
         public City()
         {
-            Cabins = new HashSet<Cabin>();
-            Citizens = new HashSet<Citizen>();
-            Employees = new HashSet<Employee>();
+            Addresses = new HashSet<Address>();
         }
 
         public int Id { get; set; }
         public string City1 { get; set; }
-        public int IdState { get; set; }
 
-        public virtual State IdStateNavigation { get; set; }
-        public virtual ICollection<Cabin> Cabins { get; set; }
-        public virtual ICollection<Citizen> Citizens { get; set; }
-        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
     }
 }

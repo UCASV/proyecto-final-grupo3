@@ -18,10 +18,11 @@ namespace ProyectoVacunacionCovid.VaccinationContext
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public int IdCity { get; set; }
-        public int IdInstitution { get; set; }
+        public int IdAddress { get; set; }
+        public int? IdInstitution { get; set; }
 
-        public virtual City IdCityNavigation { get; set; }
+        public virtual Address IdAddressNavigation { get; set; }
+        public virtual Institution IdInstitutionNavigation { get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual ICollection<UserDisease> UserDiseases { get; set; }
     }
