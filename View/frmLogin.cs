@@ -14,10 +14,13 @@ namespace ProyectoVacunacionCovid
     public partial class frmLogin : Form
     {
         public bool SuccesLogin { get; set; }
-        public frmLogin( )
+
+        private Cabin Cabin { get; set; }
+        public frmLogin(Cabin cabin)
         {
             InitializeComponent();
             this.SuccesLogin = false;
+            this.Cabin = cabin;
         }
 
 
@@ -38,10 +41,18 @@ namespace ProyectoVacunacionCovid
             {
                 if (result.First().Password.Equals(txtPassword.Text))
                 {
+                    ManagerxCabin mxc = new ManagerxCabin()
+                    {
+                        DatetimeLogin = DateTime.Now,
+                        IdCabin = this.Cabin.Id,
+                        IdManager = result.First().Id
+                    };
+                    db.Add(mxc);
+                    db.SaveChanges();
+
+                    this.SuccesLogin = true;
                     MessageBox.Show("Bienvenido", "Gobierno de El Salvador",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                    this.SuccesLogin = true;
                     this.Close();
                 }
                 else
