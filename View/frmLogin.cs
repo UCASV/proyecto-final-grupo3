@@ -13,9 +13,11 @@ namespace ProyectoVacunacionCovid
 {
     public partial class frmLogin : Form
     {
-        public frmLogin()
+        public bool SuccesLogin { get; set; }
+        public frmLogin( )
         {
             InitializeComponent();
+            this.SuccesLogin = false;
         }
 
 
@@ -25,7 +27,6 @@ namespace ProyectoVacunacionCovid
             var uss = db.Managers.ToList();
             var result = uss.Where(
                 u => u.Username.Equals(txtUser.Text)
-                        //u.Password.Equals(txtPassword.Text)
             ).ToList();
 
             if (result.Count == 0)
@@ -39,9 +40,9 @@ namespace ProyectoVacunacionCovid
                 {
                     MessageBox.Show("Bienvenido", "Gobierno de El Salvador",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //frmMain window = new frmMain(result[0]);
-                    //window.Show();
-                    //this.Hide();
+                    
+                    this.SuccesLogin = true;
+                    this.Close();
                 }
                 else
                 {

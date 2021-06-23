@@ -20,7 +20,14 @@ namespace ProyectoVacunacionCovid
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new frmLogin());
+
+                //Llamando al formulario login antes que al principal
+                frmLogin login = new frmLogin();
+                login.ShowDialog();
+                //Validando si hubo login exitoso
+                if (login.SuccesLogin)
+                    Application.Run(new frmMain());
+                    //En lugar de frmMain, pongan el formulario que hayan hecho
             }
         }
     }

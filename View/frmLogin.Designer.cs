@@ -98,7 +98,7 @@ namespace ProyectoVacunacionCovid
             this.txtUser.Multiline = true;
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(214, 40);
-            this.txtUser.TabIndex = 2;
+            this.txtUser.TabIndex = 1;
             // 
             // txtPassword
             // 
@@ -109,7 +109,7 @@ namespace ProyectoVacunacionCovid
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(214, 40);
-            this.txtPassword.TabIndex = 4;
+            this.txtPassword.TabIndex = 2;
             // 
             // btnInit
             // 
@@ -123,7 +123,7 @@ namespace ProyectoVacunacionCovid
             this.btnInit.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.btnInit.Name = "btnInit";
             this.btnInit.Size = new System.Drawing.Size(434, 56);
-            this.btnInit.TabIndex = 2;
+            this.btnInit.TabIndex = 3;
             this.btnInit.Text = "Iniciar sesión";
             this.btnInit.UseVisualStyleBackColor = false;
             this.btnInit.Click += new System.EventHandler(this.btnInit_Click);
@@ -153,7 +153,7 @@ namespace ProyectoVacunacionCovid
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(631, 398);
-            this.tableLayoutPanel2.TabIndex = 3;
+            this.tableLayoutPanel2.TabIndex = 1;
             // 
             // frmLogin
             // 
