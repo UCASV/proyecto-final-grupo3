@@ -37,15 +37,25 @@ namespace Proyecto
                             Name = txtNombre.Text,
                             Dui = Int32.Parse(txtDUI.Text),
                             PhoneNumber = txtTelefono.Text,
-                            Email = txtCorreo.Text
+                            Email = txtCorreo.Text,
+                            DateOfBirth = dtpNacimiento.Value
+
 
                         };
                         var DB = new Proyecto_VacunacionContext();
                         var Iref = cmbInstitution.SelectedItem as Institution;
                         Nombre.IdInstitution = Iref.Id;
-                        Nombre.IdAddress = 1;
+                       
+                        
+                        var Aref = cmbMunicipio.SelectedItem as Address;
+                        Nombre.IdAddress  = Aref.Id;
+                  
+
                         DB.Add(Nombre);
                         DB.SaveChanges();
+
+
+                       
 
                     }
                     else MessageBox.Show("Ingrese un correo valido.", "Proyecto Vacuanación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -63,6 +73,22 @@ namespace Proyecto
             cmbInstitution.DataSource = Conexion;
             cmbInstitution.DisplayMember = "Institution1";
             cmbInstitution.ValueMember = "Id";
+          
+            var Load = DB.Cities.ToList();
+            cmbDepartamento.DataSource = Load;
+            cmbDepartamento.DisplayMember = "City1";
+            cmbDepartamento.ValueMember = "Id";
+        }
+
+        private void cmbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var DB = new Proyecto_VacunacionContext();
+            var City = cmbDepartamento.SelectedItem as City;
+            var Conexion = DB.Addresses.Where(a=> a.IdCity.Equals(City.Id)).ToList();
+            cmbMunicipio.DataSource = Conexion;
+            cmbMunicipio.DisplayMember = "State";
+            cmbMunicipio.ValueMember = "Id";
+            
         }
     }
 }
