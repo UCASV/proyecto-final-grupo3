@@ -1,28 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\steve\\source\\repos\\ProyectoVacunacionCovid\\ProyectoVacunacionCovid.csproj": {}
+    "C:\\Users\\salva\\Desktop\\Progra\\ProyectoPOO\\POO\\PROYECTO_POO\\ProyectoVacunacionCovid.csproj": {}
   },
   "projects": {
-    "C:\\Users\\steve\\source\\repos\\ProyectoVacunacionCovid\\ProyectoVacunacionCovid.csproj": {
+    "C:\\Users\\salva\\Desktop\\Progra\\ProyectoPOO\\POO\\PROYECTO_POO\\ProyectoVacunacionCovid.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\steve\\source\\repos\\ProyectoVacunacionCovid\\ProyectoVacunacionCovid.csproj",
+        "projectUniqueName": "C:\\Users\\salva\\Desktop\\Progra\\ProyectoPOO\\POO\\PROYECTO_POO\\ProyectoVacunacionCovid.csproj",
         "projectName": "ProyectoVacunacionCovid",
-        "projectPath": "C:\\Users\\steve\\source\\repos\\ProyectoVacunacionCovid\\ProyectoVacunacionCovid.csproj",
-        "packagesPath": "C:\\Users\\steve\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\steve\\source\\repos\\ProyectoVacunacionCovid\\obj\\",
+        "projectPath": "C:\\Users\\salva\\Desktop\\Progra\\ProyectoPOO\\POO\\PROYECTO_POO\\ProyectoVacunacionCovid.csproj",
+        "packagesPath": "C:\\Users\\salva\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\salva\\Desktop\\Progra\\ProyectoPOO\\POO\\PROYECTO_POO\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\steve\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\salva\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0-windows"
+          "net5.0-windows7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -77,7 +73,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
