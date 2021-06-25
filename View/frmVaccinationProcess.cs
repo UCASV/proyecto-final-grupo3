@@ -39,7 +39,7 @@ namespace ProyectoVacunacionCovid.View
             tabMain.SizeMode = TabSizeMode.Fixed;
             tabMain.TabStop = false;
 
-
+            waitingTimer.Enabled = true;
             //dgvDatasource           
             using(var db = new Proyecto_VacunacionContext()) 
             {
@@ -57,19 +57,14 @@ namespace ProyectoVacunacionCovid.View
                     CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));
                 }
                 dgvWaitingQueue.DataSource = null;
-                dgvWaitingQueue.DataSource = CitizenOnObservation;
-
+                dgvWaitingQueue.DataSource = CitizenQueue;
             }
-
             UpdateDgvCitizen();
-            
-
-
         }
 
         private void waitingTimer_Tick(object sender, EventArgs e)
         {
-
+            lblTimer.Text = DateTime.Now.ToString("hh:mm tt");
         }
 
         private void btnWaitingQueue_Click(object sender, EventArgs e)
@@ -107,12 +102,29 @@ namespace ProyectoVacunacionCovid.View
                     CitizenQueueVm.Remove(selectedItem);
                     UpdateDgvCitizen();
 
-                    CitizenOnObservation.Add(selectedItem);
-                    dgvWaitingQueue.DataSource = null;
-                    dgvWaitingQueue.DataSource = CitizenOnObservation;
+                    using (var db = new Proyecto_VacunacionContext())
+                    {
+                        try
+                        {
+                            //Seteando hora de vacunacion de elemento selecionado
+                            var appoinmentDb = db.Appointments.ToList();
+                            var updateAp = appoinmentDb.Find(a => (a.DuiCitizen == selectedItem.Dui) && (a.DateHourVaccination == null));
+                            updateAp.DateHourVaccination = DateTime.Now;
 
-                }    
-                
+                            db.Update(updateAp);
+                            db.SaveChanges();
+
+                            //Actualizando dgv y lista de pacientes en espera
+                            CitizenOnObservation.Add(selectedItem);
+                            dgvWaitingQueue.DataSource = null;
+                            dgvWaitingQueue.DataSource = CitizenOnObservation;
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Error al establecer conexion con base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }      
             }
         }
         private void UpdateDgvCitizen()

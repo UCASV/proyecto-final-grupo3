@@ -42,6 +42,7 @@ namespace ProyectoVacunacionCovid.View
             this.dgvWaitingQueue = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblTimer = new System.Windows.Forms.Label();
             this.panelAnimation = new System.Windows.Forms.Panel();
             this.btnObservation = new System.Windows.Forms.Button();
             this.btnWaitingQueue = new System.Windows.Forms.Button();
@@ -116,13 +117,13 @@ namespace ProyectoVacunacionCovid.View
             this.dgvWaitingCitizen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvWaitingCitizen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvWaitingCitizen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWaitingCitizen.Location = new System.Drawing.Point(33, 71);
+            this.dgvWaitingCitizen.Location = new System.Drawing.Point(14, 39);
             this.dgvWaitingCitizen.MultiSelect = false;
             this.dgvWaitingCitizen.Name = "dgvWaitingCitizen";
             this.dgvWaitingCitizen.ReadOnly = true;
             this.dgvWaitingCitizen.RowTemplate.Height = 25;
             this.dgvWaitingCitizen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWaitingCitizen.Size = new System.Drawing.Size(239, 230);
+            this.dgvWaitingCitizen.Size = new System.Drawing.Size(231, 460);
             this.dgvWaitingCitizen.TabIndex = 3;
             this.dgvWaitingCitizen.TabStop = false;
             this.dgvWaitingCitizen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWaitingCitizen_CellContentClick);
@@ -159,12 +160,12 @@ namespace ProyectoVacunacionCovid.View
             this.dgvWaitingQueue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvWaitingQueue.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvWaitingQueue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWaitingQueue.Location = new System.Drawing.Point(435, 71);
+            this.dgvWaitingQueue.Location = new System.Drawing.Point(323, 39);
             this.dgvWaitingQueue.MultiSelect = false;
             this.dgvWaitingQueue.Name = "dgvWaitingQueue";
             this.dgvWaitingQueue.RowTemplate.Height = 25;
             this.dgvWaitingQueue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWaitingQueue.Size = new System.Drawing.Size(239, 230);
+            this.dgvWaitingQueue.Size = new System.Drawing.Size(437, 460);
             this.dgvWaitingQueue.TabIndex = 4;
             this.dgvWaitingQueue.TabStop = false;
             // 
@@ -180,6 +181,7 @@ namespace ProyectoVacunacionCovid.View
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.lblTimer);
             this.panel3.Controls.Add(this.panelAnimation);
             this.panel3.Controls.Add(this.btnObservation);
             this.panel3.Controls.Add(this.btnWaitingQueue);
@@ -188,6 +190,17 @@ namespace ProyectoVacunacionCovid.View
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(805, 47);
             this.panel3.TabIndex = 6;
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTimer.ForeColor = System.Drawing.Color.White;
+            this.lblTimer.Location = new System.Drawing.Point(636, 8);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(117, 28);
+            this.lblTimer.TabIndex = 4;
+            this.lblTimer.Text = "00:00 am";
             // 
             // panelAnimation
             // 
@@ -255,6 +268,7 @@ namespace ProyectoVacunacionCovid.View
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingQueue)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -276,5 +290,6 @@ namespace ProyectoVacunacionCovid.View
         private System.Windows.Forms.Button btnObservation;
         private System.Windows.Forms.Panel panelAnimation;
         private System.Windows.Forms.DataGridView dgvWaitingQueue;
+        private System.Windows.Forms.Label lblTimer;
     }
 }
