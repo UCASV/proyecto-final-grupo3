@@ -1,5 +1,4 @@
-﻿using ProyectoVacunacionCovid.Entities;
-using ProyectoVacunacionCovid.VaccinationContext;
+﻿using ProyectoVacunacionCovid.VaccinationContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ProyectoVacunacionCovid.ViewModels
 {
-    public static class Mapper
+    public static class MapperC
     {
-        static CitizenVm MapCitizenToCitizenVm(Citizen c)
+        public static CitizenVm MapCitizenToCitizenVm(Citizen c)
         {
             return new CitizenVm
             {
@@ -19,7 +18,7 @@ namespace ProyectoVacunacionCovid.ViewModels
             };
         }
 
-        static AppointmentVm MapAppointmentToAppointmentVm(Appointment a)
+        public static AppointmentVm MapAppointmentToAppointmentVm(Appointment a)
         {
             return new AppointmentVm
             {
@@ -28,12 +27,15 @@ namespace ProyectoVacunacionCovid.ViewModels
                 DateHourVaccination = a.DateHourVaccination
             };
         }
-        static WaitingCitizen MapCitizenToWaitingCitizen(Citizen c)
+        public static CitizenOnQueueVm MapCitizenAppointmentToCitizenOnQ(Citizen c, Appointment a)
         {
-            return new WaitingCitizen()
+            return new CitizenOnQueueVm
             {
                 Dui = c.Dui,
-                Name = c.Name
+                Name = c.Name,
+                DateHourProcessed = a.DateHourProcessed,
+                DateHourSchedule = a.DateHourSchedule,
+                DateHourVaccination = a.DateHourVaccination 
             };
         }
     }
