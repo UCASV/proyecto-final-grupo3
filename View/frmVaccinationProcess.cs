@@ -56,17 +56,13 @@ namespace ProyectoVacunacionCovid.View
                 {
                     CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));
                 }
-                dgvWaitingCitizen.DataSource = null;
-                dgvWaitingCitizen.DataSource = CitizenQueueVm;
+                dgvWaitingQueue.DataSource = null;
+                dgvWaitingQueue.DataSource = CitizenOnObservation;
+
             }
 
-
-            //configurando columna de botones en dgv
-            DataGridViewButtonColumn buttoms = new DataGridViewButtonColumn();
-            buttoms.UseColumnTextForButtonValue = true;
-            buttoms.HeaderText = "";
-            buttoms.Text = "Vacunar";
-            dgvWaitingCitizen.Columns.Add(buttoms);
+            UpdateDgvCitizen();
+            
 
 
         }
@@ -104,20 +100,36 @@ namespace ProyectoVacunacionCovid.View
                 {
                     //var slect = dgvWaitingCitizen.CurrentRow.DataBoundItem as CitizenVm;
                     CitizenVm selectedItem = dgvWaitingCitizen.SelectedRows[0].DataBoundItem as CitizenVm;
-                    MessageBox.Show($"{selectedItem.Name},{selectedItem.Dui} Boton Seleccionado", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    dgvWaitingCitizen.DataSource = null;
-                    CitizenQueueVm.Remove(selectedItem);
-                    dgvWaitingCitizen.DataSource = CitizenQueueVm;
-                    CitizenOnObservation.Add(selectedItem);
 
+                    //Null el dataSource por excepcion de columnase seleccionadas
                     dgvWaitingCitizen.DataSource = null;
-                    dgvWaitingCitizen.DataSource = CitizenOnObservation;
-                    
-                    
-                }
-                    
+
+                    CitizenQueueVm.Remove(selectedItem);
+                    UpdateDgvCitizen();
+
+                    CitizenOnObservation.Add(selectedItem);
+                    dgvWaitingQueue.DataSource = null;
+                    dgvWaitingQueue.DataSource = CitizenOnObservation;
+
+                }    
                 
             }
+        }
+        private void UpdateDgvCitizen()
+        {
+
+            dgvWaitingCitizen.Columns.Clear();
+            dgvWaitingCitizen.DataSource = null;
+            dgvWaitingCitizen.DataSource = CitizenQueueVm;
+
+            //configurando columna de botones en dgv
+            DataGridViewButtonColumn buttoms = new DataGridViewButtonColumn();
+            buttoms.UseColumnTextForButtonValue = true;
+            buttoms.Name = "VacStatus";
+            buttoms.HeaderText = "";
+            buttoms.Text = "Vacunar";
+            dgvWaitingCitizen.Columns.Add(buttoms);
+
         }
     }
 }
