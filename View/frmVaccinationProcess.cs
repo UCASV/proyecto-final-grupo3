@@ -55,12 +55,12 @@ namespace ProyectoVacunacionCovid.View
             {
                 try
                 {
-                    CitizenQueue = db.Citizens.ToList();
+                    //CitizenQueue = db.Citizens.ToList();
                     SecundaryEffectsList = db.SecundaryEffects.ToList();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ërror en base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error en base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     throw;
                 }
                 foreach (var c in CitizenQueue)
@@ -181,7 +181,15 @@ namespace ProyectoVacunacionCovid.View
             buttoms.Name = "Sintomas";
             buttoms.HeaderText = "";
             buttoms.Text = "Registrar Sintoma";
+            //Configurando columna de boton Dar de alta
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.UseColumnTextForButtonValue = true;
+            btn.Name = "Alta";
+            btn.HeaderText = "";
+            btn.Text = "Dar Alta";
+
             dgvWaitingQueue.Columns.Add(buttoms);
+            dgvWaitingQueue.Columns.Add(btn);
 
             dgvWaitingQueue.Columns[0].HeaderText = "DUI";
             dgvWaitingQueue.Columns[1].HeaderText = "Nombre";

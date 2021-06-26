@@ -89,5 +89,15 @@ namespace ProyectoVacunacionCovid.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap waiting_room_symbol_logo_blue {
+            get {
+                object obj = ResourceManager.GetObject("waiting-room-symbol-logo-blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

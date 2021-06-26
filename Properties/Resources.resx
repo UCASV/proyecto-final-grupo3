@@ -118,13 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="007__close" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\007__close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="progressBarPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\progressBarPic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo-covid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo-covid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="progressBarPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\progressBarPic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="007__close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\007__close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="waiting-room-symbol-logo-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\waiting-room-symbol-logo-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -43,8 +43,10 @@ namespace ProyectoVacunacionCovid.View
             this.waitingTimer = new System.Windows.Forms.Timer(this.components);
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.cmbSecundaryEffects = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,12 +56,12 @@ namespace ProyectoVacunacionCovid.View
             this.panelAnimation = new System.Windows.Forms.Panel();
             this.btnObservation = new System.Windows.Forms.Button();
             this.btnWaitingQueue = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingCitizen)).BeginInit();
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingQueue)).BeginInit();
@@ -145,13 +147,13 @@ namespace ProyectoVacunacionCovid.View
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvWaitingCitizen.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvWaitingCitizen.Location = new System.Drawing.Point(21, 14);
+            this.dgvWaitingCitizen.Location = new System.Drawing.Point(394, 16);
             this.dgvWaitingCitizen.MultiSelect = false;
             this.dgvWaitingCitizen.Name = "dgvWaitingCitizen";
             this.dgvWaitingCitizen.ReadOnly = true;
             this.dgvWaitingCitizen.RowTemplate.Height = 25;
             this.dgvWaitingCitizen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWaitingCitizen.Size = new System.Drawing.Size(585, 473);
+            this.dgvWaitingCitizen.Size = new System.Drawing.Size(372, 473);
             this.dgvWaitingCitizen.TabIndex = 3;
             this.dgvWaitingCitizen.TabStop = false;
             this.dgvWaitingCitizen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWaitingCitizen_CellContentClick);
@@ -173,6 +175,7 @@ namespace ProyectoVacunacionCovid.View
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.pictureBox2);
             this.tabPage1.Controls.Add(this.dgvWaitingCitizen);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
@@ -181,6 +184,16 @@ namespace ProyectoVacunacionCovid.View
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ProyectoVacunacionCovid.Properties.Resources.waiting_room_symbol_logo_blue;
+            this.pictureBox2.Location = new System.Drawing.Point(51, 122);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(265, 245);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
             // 
             // tabPage2
             // 
@@ -205,6 +218,18 @@ namespace ProyectoVacunacionCovid.View
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(330, 248);
             this.panel4.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(12, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(318, 63);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Selecciona el tipo de efecto secundario\r\npresentado, luego selecciona\r\nel ciudada" +
+    "no que lo presento.";
             // 
             // cmbSecundaryEffects
             // 
@@ -333,18 +358,6 @@ namespace ProyectoVacunacionCovid.View
             this.btnWaitingQueue.UseVisualStyleBackColor = false;
             this.btnWaitingQueue.Click += new System.EventHandler(this.btnWaitingQueue_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(318, 63);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Selecciona el tipo de efecto secundario\r\npresentado, luego selecciona\r\nel ciudada" +
-    "no que lo presento.";
-            // 
             // frmVaccinationProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -367,6 +380,7 @@ namespace ProyectoVacunacionCovid.View
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingCitizen)).EndInit();
             this.tabMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -400,5 +414,6 @@ namespace ProyectoVacunacionCovid.View
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
