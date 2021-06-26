@@ -30,6 +30,10 @@ namespace ProyectoVacunacionCovid.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnExit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -39,8 +43,8 @@ namespace ProyectoVacunacionCovid.View
             this.waitingTimer = new System.Windows.Forms.Timer(this.components);
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dgvWaitingQueue = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgvWaitingQueue = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTimer = new System.Windows.Forms.Label();
             this.panelAnimation = new System.Windows.Forms.Panel();
@@ -51,6 +55,7 @@ namespace ProyectoVacunacionCovid.View
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingCitizen)).BeginInit();
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingQueue)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -115,15 +120,32 @@ namespace ProyectoVacunacionCovid.View
             // dgvWaitingCitizen
             // 
             this.dgvWaitingCitizen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvWaitingCitizen.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvWaitingCitizen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWaitingCitizen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvWaitingCitizen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWaitingCitizen.Location = new System.Drawing.Point(14, 39);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvWaitingCitizen.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvWaitingCitizen.Location = new System.Drawing.Point(38, 12);
             this.dgvWaitingCitizen.MultiSelect = false;
             this.dgvWaitingCitizen.Name = "dgvWaitingCitizen";
             this.dgvWaitingCitizen.ReadOnly = true;
             this.dgvWaitingCitizen.RowTemplate.Height = 25;
             this.dgvWaitingCitizen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWaitingCitizen.Size = new System.Drawing.Size(231, 460);
+            this.dgvWaitingCitizen.Size = new System.Drawing.Size(543, 460);
             this.dgvWaitingCitizen.TabIndex = 3;
             this.dgvWaitingCitizen.TabStop = false;
             this.dgvWaitingCitizen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWaitingCitizen_CellContentClick);
@@ -145,7 +167,6 @@ namespace ProyectoVacunacionCovid.View
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dgvWaitingQueue);
             this.tabPage1.Controls.Add(this.dgvWaitingCitizen);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
@@ -155,22 +176,9 @@ namespace ProyectoVacunacionCovid.View
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dgvWaitingQueue
-            // 
-            this.dgvWaitingQueue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvWaitingQueue.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvWaitingQueue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWaitingQueue.Location = new System.Drawing.Point(323, 39);
-            this.dgvWaitingQueue.MultiSelect = false;
-            this.dgvWaitingQueue.Name = "dgvWaitingQueue";
-            this.dgvWaitingQueue.RowTemplate.Height = 25;
-            this.dgvWaitingQueue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWaitingQueue.Size = new System.Drawing.Size(437, 460);
-            this.dgvWaitingQueue.TabIndex = 4;
-            this.dgvWaitingQueue.TabStop = false;
-            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dgvWaitingQueue);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -178,6 +186,38 @@ namespace ProyectoVacunacionCovid.View
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dgvWaitingQueue
+            // 
+            this.dgvWaitingQueue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvWaitingQueue.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvWaitingQueue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWaitingQueue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvWaitingQueue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvWaitingQueue.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvWaitingQueue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvWaitingQueue.Location = new System.Drawing.Point(3, 3);
+            this.dgvWaitingQueue.MultiSelect = false;
+            this.dgvWaitingQueue.Name = "dgvWaitingQueue";
+            this.dgvWaitingQueue.RowTemplate.Height = 25;
+            this.dgvWaitingQueue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvWaitingQueue.Size = new System.Drawing.Size(773, 509);
+            this.dgvWaitingQueue.TabIndex = 4;
+            this.dgvWaitingQueue.TabStop = false;
             // 
             // panel3
             // 
@@ -266,6 +306,7 @@ namespace ProyectoVacunacionCovid.View
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingCitizen)).EndInit();
             this.tabMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingQueue)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
