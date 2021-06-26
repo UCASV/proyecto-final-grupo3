@@ -21,14 +21,12 @@ namespace ProyectoVacunacionCovid.View
         public List<CitizenVm> CitizenQueueVm { get; set; }
         public List<Citizen> CitizenQueue { get; set; }
         public List<CitizenVm> CitizenOnObservation { get; set; }
-        public List<SecundaryEffect> SecundaryEffectsList { get; set; }
         public List<CitizenTimer> TimeCounterPerCitizen { get; set; }
         public frmVaccinationProcess()
         {
             InitializeComponent();
             CitizenQueueVm = new List<CitizenVm>();
             CitizenOnObservation = new List<CitizenVm>();
-            SecundaryEffectsList = new List<SecundaryEffect>();
             TimeCounterPerCitizen = new List<CitizenTimer>();
         }
 
@@ -44,10 +42,10 @@ namespace ProyectoVacunacionCovid.View
             tabMain.ItemSize = new Size(0, 1);
             tabMain.SizeMode = TabSizeMode.Fixed;
             tabMain.TabStop = false;
-            
 
+            var SecundaryEffectsList = new List<SecundaryEffect>();
             //dgvDatasource           
-            using(var db = new Proyecto_VacunacionContext()) 
+            using (var db = new Proyecto_VacunacionContext()) 
             {
                 try
                 {
@@ -192,6 +190,26 @@ namespace ProyectoVacunacionCovid.View
             TimeCounterPerCitizen.ForEach(c => c.TimeSec++);
         }
 
+        private void dgvWaitingQueue_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((e.RowIndex != -1) && (e.ColumnIndex == 2))
+            {
+                var citizenSelected = dgvWaitingQueue.SelectedRows[0].DataBoundItem as CitizenVm;
+                SecundaryEffect secEffect = cmbSecundaryEffects.SelectedItem as SecundaryEffect;
+                if(MessageBox.Show($"Registrar {secEffect.SecundaryEffect1}, en {citizenSelected.Name}","Nuevo Efecto Secundario",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                {
 
+                }
+                    
+                if (dgvWaitingQueue.CurrentRow == null) return;
+
+                using(var db = new Proyecto_VacunacionContext()) 
+                {
+                    var appoimentEffectDB = db.AppointmentEffects.ToList();
+
+
+                }
+            }
+        }
     }
 }
