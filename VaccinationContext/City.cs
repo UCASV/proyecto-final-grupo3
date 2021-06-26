@@ -14,7 +14,9 @@ namespace ProyectoVacunacionCovid.VaccinationContext
 
         public int Id { get; set; }
         public string City1 { get; set; }
+        public int IdState { get; set; }
 
+        public virtual State IdStateNavigation { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
     }
 }
