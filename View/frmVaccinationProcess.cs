@@ -55,7 +55,7 @@ namespace ProyectoVacunacionCovid.View
             {
                 try
                 {
-                    //CitizenQueue = db.Citizens.ToList();
+                    CitizenQueue = db.Citizens.ToList();
                     SecundaryEffectsList = db.SecundaryEffects.ToList();
                 }
                 catch (Exception)
@@ -205,39 +205,81 @@ namespace ProyectoVacunacionCovid.View
 
         private void dgvWaitingQueue_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ((e.RowIndex != -1) && (e.ColumnIndex == 2))
+            if (e.RowIndex == -1) return;
+
+            if (e.ColumnIndex == 2)
             {
-                var citizenSelected = dgvWaitingQueue.SelectedRows[0].DataBoundItem as CitizenVm;
-                SecundaryEffect secEffect = cmbSecundaryEffects.SelectedItem as SecundaryEffect;
-                var minute = TimeCounterPerCitizen.Find(c => c.Dui == citizenSelected.Dui).TimeMinutes;
-
-                if(MessageBox.Show($"Registrar {secEffect.SecundaryEffect1} en {citizenSelected.Name} {minute} minutos despues de la inyeccion.","Nuevo Efecto Secundario",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    if (dgvWaitingQueue.CurrentRow == null) return;
-
-                    using(var db = new Proyecto_VacunacionContext()) 
-                    {
-                        var appointmentsDb = db.Appointments.ToList();
-                        try
-                        {
-                            var activeAppointment = appointmentsDb.Find(a => (a.DuiCitizen == citizenSelected.Dui) && (a.DateHourProcessed == null));
-
-
-                            var appointment = new AppointmentEffect(minute, secEffect.Id, activeAppointment.Id);
-
-                            //Actualizando DB
-                            db.Add(appointment);
-                            db.SaveChanges();
-
-                        }
-                        catch (Exception)
-                        {
-                            MessageBox.Show("Cita no disponible", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-                }                   
+                ProcessSecundaryEffect();
             }
+            if(e.ColumnIndex == 3)
+            {
+                ProcessCitizen();
+            }
+        }
+        private void ProcessSecundaryEffect()
+        {
+            var citizenSelected = dgvWaitingQueue.SelectedRows[0].DataBoundItem as CitizenVm;
+            SecundaryEffect secEffect = cmbSecundaryEffects.SelectedItem as SecundaryEffect;
+            var minutes = TimeCounterPerCitizen.Find(c => c.Dui == citizenSelected.Dui).TimeMinutes;
+
+            if (MessageBox.Show($"Registrar {secEffect.SecundaryEffect1} en {citizenSelected.Name} {minutes} minutos despues de la inyeccion.", "Nuevo Efecto Secundario", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (dgvWaitingQueue.CurrentRow == null) return;
+
+                using (var db = new Proyecto_VacunacionContext())
+                {
+                    var appointmentsDb = db.Appointments.ToList();
+                    try
+                    {
+                        var activeAppointment = appointmentsDb.Find(a => (a.DuiCitizen == citizenSelected.Dui) && (a.DateHourProcessed == null));
+
+
+                        //var appointment = new AppointmentEffect(minutes, secEffect.Id, activeAppointment.Id);
+
+                        var appointment = new AppointmentEffect
+                        {
+                            Minute = minutes,
+                            IdSecundaryEffect = secEffect.Id,
+                            IdAppointment = activeAppointment.Id
+
+                        };
+
+                        //Actualizando DB
+                        db.Add(appointment);
+                        db.SaveChanges();
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Cita no disponible", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
+        }
+        private void ProcessCitizen() 
+        {
+            var citizenSelected = dgvWaitingQueue.SelectedRows[0].DataBoundItem as CitizenVm;
+            
+            using(var db = new Proyecto_VacunacionContext())
+            {
+                var appointmentnDb = db.Appointments.ToList();
+                var appointmentUpdate = appointmentnDb.Find(a => a.DuiCitizen == citizenSelected.Dui && a.DateHourProcessed == null);
+                appointmentUpdate.DateHourProcessed = DateTime.Now;
+
+                try
+                {
+                    db.Update(appointmentUpdate);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error al establecer conexion con base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            dgvWaitingQueue.DataSource = null;
+            CitizenOnObservation.Remove(citizenSelected);
+            UpdateDgvWaitingQueue();
         }
     }
 }

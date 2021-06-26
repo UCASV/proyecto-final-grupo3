@@ -46,6 +46,7 @@ namespace ProyectoVacunacionCovid.View
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbSecundaryEffects = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -75,7 +76,7 @@ namespace ProyectoVacunacionCovid.View
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Image = global::ProyectoVacunacionCovid.Properties.Resources._007__close;
-            this.btnExit.Location = new System.Drawing.Point(756, 12);
+            this.btnExit.Location = new System.Drawing.Point(815, 6);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(37, 34);
             this.btnExit.TabIndex = 0;
@@ -103,7 +104,7 @@ namespace ProyectoVacunacionCovid.View
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(805, 107);
+            this.panel1.Size = new System.Drawing.Size(864, 107);
             this.panel1.TabIndex = 2;
             // 
             // panel2
@@ -127,7 +128,7 @@ namespace ProyectoVacunacionCovid.View
             // 
             // dgvWaitingCitizen
             // 
-            this.dgvWaitingCitizen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvWaitingCitizen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvWaitingCitizen.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvWaitingCitizen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -147,13 +148,13 @@ namespace ProyectoVacunacionCovid.View
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvWaitingCitizen.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvWaitingCitizen.Location = new System.Drawing.Point(394, 16);
+            this.dgvWaitingCitizen.Location = new System.Drawing.Point(322, 0);
             this.dgvWaitingCitizen.MultiSelect = false;
             this.dgvWaitingCitizen.Name = "dgvWaitingCitizen";
             this.dgvWaitingCitizen.ReadOnly = true;
             this.dgvWaitingCitizen.RowTemplate.Height = 25;
             this.dgvWaitingCitizen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWaitingCitizen.Size = new System.Drawing.Size(372, 473);
+            this.dgvWaitingCitizen.Size = new System.Drawing.Size(507, 473);
             this.dgvWaitingCitizen.TabIndex = 3;
             this.dgvWaitingCitizen.TabStop = false;
             this.dgvWaitingCitizen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWaitingCitizen_CellContentClick);
@@ -170,7 +171,7 @@ namespace ProyectoVacunacionCovid.View
             this.tabMain.Location = new System.Drawing.Point(12, 160);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(787, 543);
+            this.tabMain.Size = new System.Drawing.Size(840, 543);
             this.tabMain.TabIndex = 5;
             // 
             // tabPage1
@@ -180,7 +181,7 @@ namespace ProyectoVacunacionCovid.View
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(779, 515);
+            this.tabPage1.Size = new System.Drawing.Size(832, 515);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -188,9 +189,9 @@ namespace ProyectoVacunacionCovid.View
             // pictureBox2
             // 
             this.pictureBox2.Image = global::ProyectoVacunacionCovid.Properties.Resources.waiting_room_symbol_logo_blue;
-            this.pictureBox2.Location = new System.Drawing.Point(51, 122);
+            this.pictureBox2.Location = new System.Drawing.Point(15, 104);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(265, 245);
+            this.pictureBox2.Size = new System.Drawing.Size(285, 262);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
@@ -202,7 +203,7 @@ namespace ProyectoVacunacionCovid.View
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(779, 515);
+            this.tabPage2.Size = new System.Drawing.Size(832, 515);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -210,21 +211,33 @@ namespace ProyectoVacunacionCovid.View
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
+            this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.cmbSecundaryEffects);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(446, 3);
+            this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(330, 248);
+            this.panel4.Size = new System.Drawing.Size(826, 135);
             this.panel4.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(385, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(214, 25);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Efectos Secundarios";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 65);
+            this.label3.Location = new System.Drawing.Point(16, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(318, 63);
             this.label3.TabIndex = 6;
@@ -236,7 +249,7 @@ namespace ProyectoVacunacionCovid.View
             this.cmbSecundaryEffects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecundaryEffects.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbSecundaryEffects.FormattingEnabled = true;
-            this.cmbSecundaryEffects.Location = new System.Drawing.Point(13, 155);
+            this.cmbSecundaryEffects.Location = new System.Drawing.Point(385, 52);
             this.cmbSecundaryEffects.Name = "cmbSecundaryEffects";
             this.cmbSecundaryEffects.Size = new System.Drawing.Size(303, 29);
             this.cmbSecundaryEffects.TabIndex = 4;
@@ -254,7 +267,7 @@ namespace ProyectoVacunacionCovid.View
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(6, 17);
+            this.label2.Location = new System.Drawing.Point(14, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(310, 25);
             this.label2.TabIndex = 4;
@@ -262,12 +275,12 @@ namespace ProyectoVacunacionCovid.View
             // 
             // dgvWaitingQueue
             // 
-            this.dgvWaitingQueue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvWaitingQueue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvWaitingQueue.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvWaitingQueue.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -276,19 +289,19 @@ namespace ProyectoVacunacionCovid.View
             this.dgvWaitingQueue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvWaitingQueue.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvWaitingQueue.Location = new System.Drawing.Point(3, 3);
+            this.dgvWaitingQueue.Location = new System.Drawing.Point(3, 144);
             this.dgvWaitingQueue.MultiSelect = false;
             this.dgvWaitingQueue.Name = "dgvWaitingQueue";
             this.dgvWaitingQueue.ReadOnly = true;
             this.dgvWaitingQueue.RowTemplate.Height = 25;
             this.dgvWaitingQueue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWaitingQueue.Size = new System.Drawing.Size(437, 492);
+            this.dgvWaitingQueue.Size = new System.Drawing.Size(826, 368);
             this.dgvWaitingQueue.TabIndex = 4;
             this.dgvWaitingQueue.TabStop = false;
             this.dgvWaitingQueue.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWaitingQueue_CellContentClick);
@@ -302,7 +315,7 @@ namespace ProyectoVacunacionCovid.View
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 107);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(805, 47);
+            this.panel3.Size = new System.Drawing.Size(864, 47);
             this.panel3.TabIndex = 6;
             // 
             // lblTimer
@@ -310,7 +323,7 @@ namespace ProyectoVacunacionCovid.View
             this.lblTimer.AutoSize = true;
             this.lblTimer.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTimer.ForeColor = System.Drawing.Color.White;
-            this.lblTimer.Location = new System.Drawing.Point(636, 8);
+            this.lblTimer.Location = new System.Drawing.Point(717, 8);
             this.lblTimer.Name = "lblTimer";
             this.lblTimer.Size = new System.Drawing.Size(117, 28);
             this.lblTimer.TabIndex = 4;
@@ -363,7 +376,7 @@ namespace ProyectoVacunacionCovid.View
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(89)))), ((int)(((byte)(232)))));
-            this.ClientSize = new System.Drawing.Size(805, 734);
+            this.ClientSize = new System.Drawing.Size(864, 734);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.panel1);
@@ -415,5 +428,6 @@ namespace ProyectoVacunacionCovid.View
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label4;
     }
 }
