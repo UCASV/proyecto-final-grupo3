@@ -20,11 +20,13 @@ namespace ProyectoVacunacionCovid.View
         public List<CitizenVm> CitizenQueueVm { get; set; }
         public List<Citizen> CitizenQueue { get; set; }
         public List<CitizenVm> CitizenOnObservation { get; set; }
+        public List<SecundaryEffect> SecundaryEffectsList { get; set; }
         public frmVaccinationProcess()
         {
             InitializeComponent();
             CitizenQueueVm = new List<CitizenVm>();
             CitizenOnObservation = new List<CitizenVm>();
+            SecundaryEffectsList = new List<SecundaryEffect>();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -46,6 +48,7 @@ namespace ProyectoVacunacionCovid.View
                 try
                 {
                     CitizenQueue = db.Citizens.ToList();
+                    SecundaryEffectsList = db.SecundaryEffects.ToList();
                 }
                 catch (Exception)
                 {
@@ -55,10 +58,9 @@ namespace ProyectoVacunacionCovid.View
                 foreach (var c in CitizenQueue)
                 {
                     CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));
-                }
-                dgvWaitingQueue.DataSource = null;
-                dgvWaitingQueue.DataSource = CitizenQueue;
+                }   
             }
+            UpdateDgvWaitingQueue();
             UpdateDgvCitizen();
         }
 
@@ -91,7 +93,7 @@ namespace ProyectoVacunacionCovid.View
             {
                 if (dgvWaitingCitizen.CurrentRow == null) return;
 
-                if (MessageBox.Show("Boton Seleccionado", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Aplicar vacuna a paciente?", "Vacunar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     //var slect = dgvWaitingCitizen.CurrentRow.DataBoundItem as CitizenVm;
                     CitizenVm selectedItem = dgvWaitingCitizen.SelectedRows[0].DataBoundItem as CitizenVm;
@@ -116,8 +118,7 @@ namespace ProyectoVacunacionCovid.View
 
                             //Actualizando dgv y lista de pacientes en espera
                             CitizenOnObservation.Add(selectedItem);
-                            dgvWaitingQueue.DataSource = null;
-                            dgvWaitingQueue.DataSource = CitizenOnObservation;
+                            UpdateDgvWaitingQueue();
                         }
                         catch (Exception)
                         {
@@ -141,6 +142,35 @@ namespace ProyectoVacunacionCovid.View
             buttoms.HeaderText = "";
             buttoms.Text = "Vacunar";
             dgvWaitingCitizen.Columns.Add(buttoms);
+
+            dgvWaitingCitizen.Columns[0].HeaderText = "DUI";
+            dgvWaitingCitizen.Columns[1].HeaderText = "Nombre";
+
+        }
+
+        private void UpdateDgvWaitingQueue()
+        {
+
+            dgvWaitingQueue.Columns.Clear();
+            dgvWaitingQueue.DataSource = null;
+            dgvWaitingQueue.DataSource = CitizenOnObservation;
+
+            //Configurando columna de botones en dgv
+            DataGridViewButtonColumn buttoms = new DataGridViewButtonColumn();
+            buttoms.UseColumnTextForButtonValue = true;
+            buttoms.Name = "Sintomas";
+            buttoms.HeaderText = "";
+            buttoms.Text = "Registrar Sintoma";
+            dgvWaitingQueue.Columns.Add(buttoms);
+
+            dgvWaitingQueue.Columns[0].HeaderText = "DUI";
+            dgvWaitingQueue.Columns[1].HeaderText = "Nombre";
+
+            DataGridViewComboBoxColumn cmbColumn = new DataGridViewComboBoxColumn();
+            cmbColumn.DataSource = SecundaryEffectsList;
+            cmbColumn.Name = "cmbEffects";
+            cmbColumn.HeaderText = "Tipo de efecto secundario";
+            dgvWaitingCitizen.Columns.Add(cmbColumn);
 
         }
     }

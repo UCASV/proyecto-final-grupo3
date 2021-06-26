@@ -26,17 +26,6 @@ namespace ProyectoVacunacionCovid.ViewModels
                 DateHourSchedule = a.DateHourSchedule,
                 DateHourVaccination = a.DateHourVaccination
             };
-        }
-        public static CitizenOnQueueVm MapCitizenAppointmentToCitizenOnQ(Citizen c, Appointment a)
-        {
-            return new CitizenOnQueueVm
-            {
-                Dui = c.Dui,
-                Name = c.Name,
-                DateHourProcessed = a.DateHourProcessed,
-                DateHourSchedule = a.DateHourSchedule,
-                DateHourVaccination = a.DateHourVaccination 
-            };
-        }
+        }    
     }
 }
