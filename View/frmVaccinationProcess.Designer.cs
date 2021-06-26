@@ -54,6 +54,7 @@ namespace ProyectoVacunacionCovid.View
             this.panelAnimation = new System.Windows.Forms.Panel();
             this.btnObservation = new System.Windows.Forms.Button();
             this.btnWaitingQueue = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingCitizen)).BeginInit();
@@ -196,12 +197,13 @@ namespace ProyectoVacunacionCovid.View
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
+            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.cmbSecundaryEffects);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Location = new System.Drawing.Point(446, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(330, 144);
+            this.panel4.Size = new System.Drawing.Size(330, 248);
             this.panel4.TabIndex = 6;
             // 
             // cmbSecundaryEffects
@@ -209,9 +211,9 @@ namespace ProyectoVacunacionCovid.View
             this.cmbSecundaryEffects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecundaryEffects.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbSecundaryEffects.FormattingEnabled = true;
-            this.cmbSecundaryEffects.Location = new System.Drawing.Point(16, 69);
+            this.cmbSecundaryEffects.Location = new System.Drawing.Point(13, 155);
             this.cmbSecundaryEffects.Name = "cmbSecundaryEffects";
-            this.cmbSecundaryEffects.Size = new System.Drawing.Size(278, 29);
+            this.cmbSecundaryEffects.Size = new System.Drawing.Size(303, 29);
             this.cmbSecundaryEffects.TabIndex = 4;
             // 
             // panel5
@@ -331,6 +333,18 @@ namespace ProyectoVacunacionCovid.View
             this.btnWaitingQueue.UseVisualStyleBackColor = false;
             this.btnWaitingQueue.Click += new System.EventHandler(this.btnWaitingQueue_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(12, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(318, 63);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Selecciona el tipo de efecto secundario\r\npresentado, luego selecciona\r\nel ciudada" +
+    "no que lo presento.";
+            // 
             // frmVaccinationProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -385,5 +399,6 @@ namespace ProyectoVacunacionCovid.View
         private System.Windows.Forms.ComboBox cmbSecundaryEffects;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
