@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProyectoVacunacionCovid.Models;
 using ProyectoVacunacionCovid.Properties;
 using ProyectoVacunacionCovid.VaccinationContext;
 using ProyectoVacunacionCovid.ViewModels;
@@ -21,12 +22,14 @@ namespace ProyectoVacunacionCovid.View
         public List<Citizen> CitizenQueue { get; set; }
         public List<CitizenVm> CitizenOnObservation { get; set; }
         public List<SecundaryEffect> SecundaryEffectsList { get; set; }
+        public List<CitizenTimer> TimeCounterPerCitizen { get; set; }
         public frmVaccinationProcess()
         {
             InitializeComponent();
             CitizenQueueVm = new List<CitizenVm>();
             CitizenOnObservation = new List<CitizenVm>();
             SecundaryEffectsList = new List<SecundaryEffect>();
+            TimeCounterPerCitizen = new List<CitizenTimer>();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -36,12 +39,13 @@ namespace ProyectoVacunacionCovid.View
 
         private void frmVaccinationProcess_Load(object sender, EventArgs e)
         {
+            waitingTimer.Enabled = true;
             //hiding tabsHeaders on tabControl
             tabMain.ItemSize = new Size(0, 1);
             tabMain.SizeMode = TabSizeMode.Fixed;
             tabMain.TabStop = false;
+            
 
-            waitingTimer.Enabled = true;
             //dgvDatasource           
             using(var db = new Proyecto_VacunacionContext()) 
             {
@@ -63,11 +67,18 @@ namespace ProyectoVacunacionCovid.View
             //Following methon causes exception on indexrow
             //UpdateDgvWaitingQueue();
             UpdateDgvCitizen();
+
+            //Loading SecundaryEffects on cmb
+            cmbSecundaryEffects.DataSource = SecundaryEffectsList;
+            cmbSecundaryEffects.DisplayMember = "SecundaryEffect1";
+            cmbSecundaryEffects.ValueMember = "Id";
+            cmbSecundaryEffects.Text = "-Seleccionar-";
         }
 
         private void waitingTimer_Tick(object sender, EventArgs e)
         {
             lblTimer.Text = DateTime.Now.ToString("hh:mm tt");
+            AddTimeToCitizen();
         }
 
         private void btnWaitingQueue_Click(object sender, EventArgs e)
@@ -159,9 +170,7 @@ namespace ProyectoVacunacionCovid.View
             dgvWaitingQueue.DataSource = null;
             dgvWaitingQueue.DataSource = CitizenOnObservation;
 
-            comboBox1.DataSource = SecundaryEffectsList;
-            comboBox1.DisplayMember = "SecundaryEffect1";
-            comboBox1.ValueMember = "Id";
+            
 
             //Configurando columna de botones en dgv
             DataGridViewButtonColumn buttoms = new DataGridViewButtonColumn();
@@ -176,27 +185,13 @@ namespace ProyectoVacunacionCovid.View
 
         }
 
-        private void LoadCmbColumn()
+        private void AddTimeToCitizen()
         {
-            //Configurando columna ComboBox
-            DataGridViewComboBoxColumn cmbColumn = new DataGridViewComboBoxColumn();
-
-            cmbColumn.DataSource = SecundaryEffectsList;
-            cmbColumn.DataPropertyName = "SecundaryEffectsList";
-            cmbColumn.ValueMember = "Id";
-            cmbColumn.DisplayMember = "SecundaryEffect1";
-            cmbColumn.Name = "cmbEffects";
-            dgvWaitingQueue.Columns.Add(cmbColumn);
-
-
-            /*
-            DataGridViewComboBoxColumn cmbColumn = new DataGridViewComboBoxColumn();
-            cmbColumn.HeaderText = "Tipo de efecto secundario";
-            SecundaryEffectsList.ForEach(s => cmbColumn.Items.Add(s));
-            cmbColumn.DisplayMember = "SecundaryEffect1";
-            cmbColumn.ValueMember = "Id";
-            dgvWaitingQueue.Columns.Add(cmbColumn);
-            */
+            if (TimeCounterPerCitizen == null)
+                return;
+            TimeCounterPerCitizen.ForEach(c => c.TimeSec++);
         }
+
+
     }
 }

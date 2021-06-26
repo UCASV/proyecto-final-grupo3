@@ -1,4 +1,5 @@
-﻿using ProyectoVacunacionCovid.VaccinationContext;
+﻿using ProyectoVacunacionCovid.Models;
+using ProyectoVacunacionCovid.VaccinationContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,15 @@ namespace ProyectoVacunacionCovid.ViewModels
                 DateHourSchedule = a.DateHourSchedule,
                 DateHourVaccination = a.DateHourVaccination
             };
-        }    
+        }
+        public static CitizenTimer MapCitizenToCitizenTimer(Citizen c)
+        {
+            return new CitizenTimer
+            {
+                Dui = c.Dui,
+                Name = c.Name,
+                TimeSec = 0
+            }; 
+        }
     }
 }
