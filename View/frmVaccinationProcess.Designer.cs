@@ -43,8 +43,8 @@ namespace ProyectoVacunacionCovid.View
             this.waitingTimer = new System.Windows.Forms.Timer(this.components);
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvWaitingQueue = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTimer = new System.Windows.Forms.Label();
             this.panelAnimation = new System.Windows.Forms.Panel();
@@ -55,7 +55,6 @@ namespace ProyectoVacunacionCovid.View
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingCitizen)).BeginInit();
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingQueue)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -145,7 +144,7 @@ namespace ProyectoVacunacionCovid.View
             this.dgvWaitingCitizen.ReadOnly = true;
             this.dgvWaitingCitizen.RowTemplate.Height = 25;
             this.dgvWaitingCitizen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWaitingCitizen.Size = new System.Drawing.Size(543, 460);
+            this.dgvWaitingCitizen.Size = new System.Drawing.Size(543, 163);
             this.dgvWaitingCitizen.TabIndex = 3;
             this.dgvWaitingCitizen.TabStop = false;
             this.dgvWaitingCitizen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWaitingCitizen_CellContentClick);
@@ -167,6 +166,7 @@ namespace ProyectoVacunacionCovid.View
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dgvWaitingQueue);
             this.tabPage1.Controls.Add(this.dgvWaitingCitizen);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
@@ -175,17 +175,6 @@ namespace ProyectoVacunacionCovid.View
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dgvWaitingQueue);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(779, 515);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dgvWaitingQueue
             // 
@@ -209,15 +198,25 @@ namespace ProyectoVacunacionCovid.View
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvWaitingQueue.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvWaitingQueue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvWaitingQueue.Location = new System.Drawing.Point(3, 3);
+            this.dgvWaitingQueue.Location = new System.Drawing.Point(38, 253);
             this.dgvWaitingQueue.MultiSelect = false;
             this.dgvWaitingQueue.Name = "dgvWaitingQueue";
+            this.dgvWaitingQueue.ReadOnly = true;
             this.dgvWaitingQueue.RowTemplate.Height = 25;
             this.dgvWaitingQueue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWaitingQueue.Size = new System.Drawing.Size(773, 509);
+            this.dgvWaitingQueue.Size = new System.Drawing.Size(699, 218);
             this.dgvWaitingQueue.TabIndex = 4;
             this.dgvWaitingQueue.TabStop = false;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(779, 515);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -306,7 +305,6 @@ namespace ProyectoVacunacionCovid.View
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingCitizen)).EndInit();
             this.tabMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingQueue)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

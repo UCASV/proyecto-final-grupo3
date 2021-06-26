@@ -60,7 +60,8 @@ namespace ProyectoVacunacionCovid.View
                     CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));
                 }   
             }
-            UpdateDgvWaitingQueue();
+            //Following methon causes exception on indexrow
+            //UpdateDgvWaitingQueue();
             UpdateDgvCitizen();
         }
 
@@ -117,7 +118,11 @@ namespace ProyectoVacunacionCovid.View
                             db.SaveChanges();
 
                             //Actualizando dgv y lista de pacientes en espera
+                            dgvWaitingQueue.DataSource = null;
+                            dgvWaitingQueue.Refresh();
+                            dgvWaitingQueue.Update();
                             CitizenOnObservation.Add(selectedItem);
+                           
                             UpdateDgvWaitingQueue();
                         }
                         catch (Exception)
@@ -170,7 +175,7 @@ namespace ProyectoVacunacionCovid.View
             cmbColumn.DataSource = SecundaryEffectsList;
             cmbColumn.Name = "cmbEffects";
             cmbColumn.HeaderText = "Tipo de efecto secundario";
-            dgvWaitingCitizen.Columns.Add(cmbColumn);
+            dgvWaitingQueue.Columns.Add(cmbColumn);
 
         }
     }
