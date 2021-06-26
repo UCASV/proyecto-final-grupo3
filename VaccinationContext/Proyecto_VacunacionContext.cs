@@ -54,7 +54,7 @@ namespace ProyectoVacunacionCovid.VaccinationContext
                 entity.Property(e => e.IdCity).HasColumnName("id_city");
 
                 entity.Property(e => e.Location)
-                    .HasMaxLength(20)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("location");
 
@@ -129,7 +129,7 @@ namespace ProyectoVacunacionCovid.VaccinationContext
             {
                 entity.ToTable("CABIN");
 
-                entity.HasIndex(e => e.PhoneNumber, "UQ__CABIN__A1936A6BF37E2980")
+                entity.HasIndex(e => e.PhoneNumber, "UQ__CABIN__A1936A6B46738754")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -179,11 +179,11 @@ namespace ProyectoVacunacionCovid.VaccinationContext
             modelBuilder.Entity<Citizen>(entity =>
             {
                 entity.HasKey(e => e.Dui)
-                    .HasName("PK__CITIZEN__C03671B8EF924E36");
+                    .HasName("PK__CITIZEN__C03671B88A2CBB4B");
 
                 entity.ToTable("CITIZEN");
 
-                entity.HasIndex(e => e.PhoneNumber, "UQ__CITIZEN__A1936A6B38DF26B7")
+                entity.HasIndex(e => e.PhoneNumber, "UQ__CITIZEN__A1936A6BA547BF24")
                     .IsUnique();
 
                 entity.Property(e => e.Dui)
