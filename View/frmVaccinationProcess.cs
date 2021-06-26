@@ -112,7 +112,7 @@ namespace ProyectoVacunacionCovid.View
                             //Seteando hora de vacunacion de elemento selecionado
                             var appoinmentDb = db.Appointments.ToList();
                             var updateAp = appoinmentDb.Find(a => (a.DuiCitizen == selectedItem.Dui) && (a.DateHourVaccination == null));
-                            updateAp.DateHourVaccination = DateTime.Now;
+                            if(updateAp != null) updateAp.DateHourVaccination = DateTime.Now;
 
                             db.Update(updateAp);
                             db.SaveChanges();
@@ -155,10 +155,13 @@ namespace ProyectoVacunacionCovid.View
 
         private void UpdateDgvWaitingQueue()
         {
-
             dgvWaitingQueue.Columns.Clear();
             dgvWaitingQueue.DataSource = null;
             dgvWaitingQueue.DataSource = CitizenOnObservation;
+
+            comboBox1.DataSource = SecundaryEffectsList;
+            comboBox1.DisplayMember = "SecundaryEffect1";
+            comboBox1.ValueMember = "Id";
 
             //Configurando columna de botones en dgv
             DataGridViewButtonColumn buttoms = new DataGridViewButtonColumn();
@@ -171,12 +174,29 @@ namespace ProyectoVacunacionCovid.View
             dgvWaitingQueue.Columns[0].HeaderText = "DUI";
             dgvWaitingQueue.Columns[1].HeaderText = "Nombre";
 
+        }
+
+        private void LoadCmbColumn()
+        {
+            //Configurando columna ComboBox
             DataGridViewComboBoxColumn cmbColumn = new DataGridViewComboBoxColumn();
+
             cmbColumn.DataSource = SecundaryEffectsList;
+            cmbColumn.DataPropertyName = "SecundaryEffectsList";
+            cmbColumn.ValueMember = "Id";
+            cmbColumn.DisplayMember = "SecundaryEffect1";
             cmbColumn.Name = "cmbEffects";
-            cmbColumn.HeaderText = "Tipo de efecto secundario";
             dgvWaitingQueue.Columns.Add(cmbColumn);
 
+
+            /*
+            DataGridViewComboBoxColumn cmbColumn = new DataGridViewComboBoxColumn();
+            cmbColumn.HeaderText = "Tipo de efecto secundario";
+            SecundaryEffectsList.ForEach(s => cmbColumn.Items.Add(s));
+            cmbColumn.DisplayMember = "SecundaryEffect1";
+            cmbColumn.ValueMember = "Id";
+            dgvWaitingQueue.Columns.Add(cmbColumn);
+            */
         }
     }
 }

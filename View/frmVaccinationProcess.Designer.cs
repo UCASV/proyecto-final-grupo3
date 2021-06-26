@@ -37,14 +37,15 @@ namespace ProyectoVacunacionCovid.View
             this.btnExit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvWaitingCitizen = new System.Windows.Forms.DataGridView();
             this.waitingTimer = new System.Windows.Forms.Timer(this.components);
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dgvWaitingQueue = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgvWaitingQueue = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTimer = new System.Windows.Forms.Label();
             this.panelAnimation = new System.Windows.Forms.Panel();
@@ -55,6 +56,7 @@ namespace ProyectoVacunacionCovid.View
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingCitizen)).BeginInit();
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingQueue)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +89,7 @@ namespace ProyectoVacunacionCovid.View
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
+            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -96,6 +99,14 @@ namespace ProyectoVacunacionCovid.View
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(805, 107);
             this.panel1.TabIndex = 2;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(408, 60);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(238, 23);
+            this.comboBox1.TabIndex = 4;
             // 
             // panel2
             // 
@@ -166,7 +177,6 @@ namespace ProyectoVacunacionCovid.View
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dgvWaitingQueue);
             this.tabPage1.Controls.Add(this.dgvWaitingCitizen);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
@@ -175,6 +185,17 @@ namespace ProyectoVacunacionCovid.View
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dgvWaitingQueue);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(779, 515);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dgvWaitingQueue
             // 
@@ -198,25 +219,16 @@ namespace ProyectoVacunacionCovid.View
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvWaitingQueue.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvWaitingQueue.Location = new System.Drawing.Point(38, 253);
+            this.dgvWaitingQueue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvWaitingQueue.Location = new System.Drawing.Point(3, 3);
             this.dgvWaitingQueue.MultiSelect = false;
             this.dgvWaitingQueue.Name = "dgvWaitingQueue";
             this.dgvWaitingQueue.ReadOnly = true;
             this.dgvWaitingQueue.RowTemplate.Height = 25;
-            this.dgvWaitingQueue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWaitingQueue.Size = new System.Drawing.Size(699, 218);
+            this.dgvWaitingQueue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvWaitingQueue.Size = new System.Drawing.Size(773, 509);
             this.dgvWaitingQueue.TabIndex = 4;
             this.dgvWaitingQueue.TabStop = false;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(779, 515);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -305,6 +317,7 @@ namespace ProyectoVacunacionCovid.View
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingCitizen)).EndInit();
             this.tabMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvWaitingQueue)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -330,5 +343,6 @@ namespace ProyectoVacunacionCovid.View
         private System.Windows.Forms.Panel panelAnimation;
         private System.Windows.Forms.DataGridView dgvWaitingQueue;
         private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
