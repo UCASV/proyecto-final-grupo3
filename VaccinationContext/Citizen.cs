@@ -19,7 +19,7 @@ namespace ProyectoVacunacionCovid.VaccinationContext
         public string Email { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public int IdAddress { get; set; }
-        public int? IdInstitution { get; set; }
+        public int IdInstitution { get; set; }
 
         public virtual Address IdAddressNavigation { get; set; }
         public virtual Institution IdInstitutionNavigation { get; set; }

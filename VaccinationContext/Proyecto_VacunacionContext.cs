@@ -29,6 +29,7 @@ namespace ProyectoVacunacionCovid.VaccinationContext
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<ManagerxCabin> ManagerxCabins { get; set; }
         public virtual DbSet<SecundaryEffect> SecundaryEffects { get; set; }
+        public virtual DbSet<State> States { get; set; }
         public virtual DbSet<UserDisease> UserDiseases { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,7 +37,7 @@ namespace ProyectoVacunacionCovid.VaccinationContext
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=localhost;Database=Proyecto_Vacunacion;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=localhost\\MSSQLSERVER01;Database=Proyecto_Vacunacion;Trusted_Connection=True;");
             }
         }
 
@@ -52,16 +53,16 @@ namespace ProyectoVacunacionCovid.VaccinationContext
 
                 entity.Property(e => e.IdCity).HasColumnName("id_city");
 
-                entity.Property(e => e.State)
+                entity.Property(e => e.Location)
                     .HasMaxLength(20)
                     .IsUnicode(false)
-                    .HasColumnName("state");
+                    .HasColumnName("location");
 
                 entity.HasOne(d => d.IdCityNavigation)
                     .WithMany(p => p.Addresses)
                     .HasForeignKey(d => d.IdCity)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ADDRESS__id_city__3E52440B");
+                    .HasConstraintName("FK__ADDRESS__id_city__403A8C7D");
             });
 
             modelBuilder.Entity<Appointment>(entity =>
@@ -90,13 +91,13 @@ namespace ProyectoVacunacionCovid.VaccinationContext
                     .WithMany(p => p.Appointments)
                     .HasForeignKey(d => d.DuiCitizen)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__APPOINTME__dui_c__440B1D61");
+                    .HasConstraintName("FK__APPOINTME__dui_c__46E78A0C");
 
                 entity.HasOne(d => d.IdCabinNavigation)
                     .WithMany(p => p.Appointments)
                     .HasForeignKey(d => d.IdCabin)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__APPOINTME__id_ca__4316F928");
+                    .HasConstraintName("FK__APPOINTME__id_ca__45F365D3");
             });
 
             modelBuilder.Entity<AppointmentEffect>(entity =>
@@ -115,20 +116,20 @@ namespace ProyectoVacunacionCovid.VaccinationContext
                     .WithMany(p => p.AppointmentEffects)
                     .HasForeignKey(d => d.IdAppointment)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__APPOINTME__id_ap__4AB81AF0");
+                    .HasConstraintName("FK__APPOINTME__id_ap__4D94879B");
 
                 entity.HasOne(d => d.IdSecundaryEffectNavigation)
                     .WithMany(p => p.AppointmentEffects)
                     .HasForeignKey(d => d.IdSecundaryEffect)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__APPOINTME__id_se__49C3F6B7");
+                    .HasConstraintName("FK__APPOINTME__id_se__4CA06362");
             });
 
             modelBuilder.Entity<Cabin>(entity =>
             {
                 entity.ToTable("CABIN");
 
-                entity.HasIndex(e => e.PhoneNumber, "UQ__CABIN__A1936A6B90D701DC")
+                entity.HasIndex(e => e.PhoneNumber, "UQ__CABIN__A1936A6BF37E2980")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -154,13 +155,13 @@ namespace ProyectoVacunacionCovid.VaccinationContext
                     .WithMany(p => p.Cabins)
                     .HasForeignKey(d => d.IdAddress)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__CABIN__id_addres__4222D4EF");
+                    .HasConstraintName("FK__CABIN__id_addres__44FF419A");
 
                 entity.HasOne(d => d.IdManagerNavigation)
                     .WithMany(p => p.Cabins)
                     .HasForeignKey(d => d.IdManager)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__CABIN__id_manage__412EB0B6");
+                    .HasConstraintName("FK__CABIN__id_manage__440B1D61");
             });
 
             modelBuilder.Entity<ChronicleDisease>(entity =>
@@ -178,11 +179,11 @@ namespace ProyectoVacunacionCovid.VaccinationContext
             modelBuilder.Entity<Citizen>(entity =>
             {
                 entity.HasKey(e => e.Dui)
-                    .HasName("PK__CITIZEN__C03671B8EA0527DF");
+                    .HasName("PK__CITIZEN__C03671B8EF924E36");
 
                 entity.ToTable("CITIZEN");
 
-                entity.HasIndex(e => e.PhoneNumber, "UQ__CITIZEN__A1936A6B467DEEDF")
+                entity.HasIndex(e => e.PhoneNumber, "UQ__CITIZEN__A1936A6B38DF26B7")
                     .IsUnique();
 
                 entity.Property(e => e.Dui)
@@ -219,12 +220,13 @@ namespace ProyectoVacunacionCovid.VaccinationContext
                     .WithMany(p => p.Citizens)
                     .HasForeignKey(d => d.IdAddress)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__CITIZEN__id_addr__44FF419A");
+                    .HasConstraintName("FK__CITIZEN__id_addr__47DBAE45");
 
                 entity.HasOne(d => d.IdInstitutionNavigation)
                     .WithMany(p => p.Citizens)
                     .HasForeignKey(d => d.IdInstitution)
-                    .HasConstraintName("FK__CITIZEN__id_inst__3D5E1FD2");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__CITIZEN__id_inst__3F466844");
             });
 
             modelBuilder.Entity<City>(entity =>
@@ -234,9 +236,17 @@ namespace ProyectoVacunacionCovid.VaccinationContext
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.City1)
-                    .HasMaxLength(20)
+                    .HasMaxLength(30)
                     .IsUnicode(false)
                     .HasColumnName("city");
+
+                entity.Property(e => e.IdState).HasColumnName("id_state");
+
+                entity.HasOne(d => d.IdStateNavigation)
+                    .WithMany(p => p.Cities)
+                    .HasForeignKey(d => d.IdState)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__CITY__id_state__412EB0B6");
             });
 
             modelBuilder.Entity<Employee>(entity =>
@@ -271,7 +281,7 @@ namespace ProyectoVacunacionCovid.VaccinationContext
                     .WithMany(p => p.Employees)
                     .HasForeignKey(d => d.IdAddress)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__EMPLOYEE__id_add__3F466844");
+                    .HasConstraintName("FK__EMPLOYEE__id_add__4222D4EF");
             });
 
             modelBuilder.Entity<Institution>(entity =>
@@ -310,35 +320,34 @@ namespace ProyectoVacunacionCovid.VaccinationContext
                     .WithMany(p => p.Managers)
                     .HasForeignKey(d => d.IdEmployee)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MANAGER__id_empl__403A8C7D");
+                    .HasConstraintName("FK__MANAGER__id_empl__4316F928");
             });
 
             modelBuilder.Entity<ManagerxCabin>(entity =>
             {
-                entity.HasKey(e => new { e.IdManager, e.IdCabin })
-                    .HasName("PK_managerxcabin");
-
                 entity.ToTable("MANAGERxCABIN");
 
-                entity.Property(e => e.IdManager).HasColumnName("id_manager");
-
-                entity.Property(e => e.IdCabin).HasColumnName("id_cabin");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.DatetimeLogin)
                     .HasColumnType("datetime")
                     .HasColumnName("datetime_login");
 
+                entity.Property(e => e.IdCabin).HasColumnName("id_cabin");
+
+                entity.Property(e => e.IdManager).HasColumnName("id_manager");
+
                 entity.HasOne(d => d.IdCabinNavigation)
                     .WithMany(p => p.ManagerxCabins)
                     .HasForeignKey(d => d.IdCabin)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MANAGERxC__id_ca__48CFD27E");
+                    .HasConstraintName("FK__MANAGERxC__id_ca__4BAC3F29");
 
                 entity.HasOne(d => d.IdManagerNavigation)
                     .WithMany(p => p.ManagerxCabins)
                     .HasForeignKey(d => d.IdManager)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__MANAGERxC__id_ma__47DBAE45");
+                    .HasConstraintName("FK__MANAGERxC__id_ma__4AB81AF0");
             });
 
             modelBuilder.Entity<SecundaryEffect>(entity =>
@@ -351,6 +360,18 @@ namespace ProyectoVacunacionCovid.VaccinationContext
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("secundary_effect");
+            });
+
+            modelBuilder.Entity<State>(entity =>
+            {
+                entity.ToTable("STATE");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.State1)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("state");
             });
 
             modelBuilder.Entity<UserDisease>(entity =>
@@ -368,13 +389,13 @@ namespace ProyectoVacunacionCovid.VaccinationContext
                     .WithMany(p => p.UserDiseases)
                     .HasForeignKey(d => d.DuiCitizen)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__USER_DISE__dui_c__46E78A0C");
+                    .HasConstraintName("FK__USER_DISE__dui_c__49C3F6B7");
 
                 entity.HasOne(d => d.IdChronicleDiseaseNavigation)
                     .WithMany(p => p.UserDiseases)
                     .HasForeignKey(d => d.IdChronicleDisease)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__USER_DISE__id_ch__45F365D3");
+                    .HasConstraintName("FK__USER_DISE__id_ch__48CFD27E");
             });
 
             OnModelCreatingPartial(modelBuilder);

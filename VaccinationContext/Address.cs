@@ -15,7 +15,7 @@ namespace ProyectoVacunacionCovid.VaccinationContext
         }
 
         public int Id { get; set; }
-        public string State { get; set; }
+        public string Location { get; set; }
         public int IdCity { get; set; }
 
         public virtual City IdCityNavigation { get; set; }
