@@ -14,5 +14,16 @@ namespace ProyectoVacunacionCovid.VaccinationContext
 
         public virtual Appointment IdAppointmentNavigation { get; set; }
         public virtual SecundaryEffect IdSecundaryEffectNavigation { get; set; }
+
+        public AppointmentEffect()
+        {
+
+        }
+        public AppointmentEffect(int Minute, int IdSecundaryEffect, int IdAppoinment)
+        {
+            this.Minute = Minute;
+            this.IdSecundaryEffect = IdSecundaryEffect;
+            this.IdAppointment = IdAppoinment;
+        }
     }
 }

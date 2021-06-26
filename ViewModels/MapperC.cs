@@ -28,7 +28,7 @@ namespace ProyectoVacunacionCovid.ViewModels
                 DateHourVaccination = a.DateHourVaccination
             };
         }
-        public static CitizenTimer MapCitizenToCitizenTimer(Citizen c)
+        public static CitizenTimer MapCitizenToCitizenTimer(CitizenVm c)
         {
             return new CitizenTimer
             {

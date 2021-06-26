@@ -43,6 +43,12 @@ namespace ProyectoVacunacionCovid.View
             tabMain.SizeMode = TabSizeMode.Fixed;
             tabMain.TabStop = false;
 
+            //DatagridView no se actualiza correctamente en segundo plano
+            tabPage2.BringToFront();
+            tabPage2.Show();
+            tabPage1.BringToFront();
+            tabPage1.Show();
+
             var SecundaryEffectsList = new List<SecundaryEffect>();
             //dgvDatasource           
             using (var db = new Proyecto_VacunacionContext()) 
@@ -76,7 +82,7 @@ namespace ProyectoVacunacionCovid.View
         private void waitingTimer_Tick(object sender, EventArgs e)
         {
             lblTimer.Text = DateTime.Now.ToString("hh:mm tt");
-            AddTimeToCitizen();
+            AddTimeToCitizens();
         }
 
         private void btnWaitingQueue_Click(object sender, EventArgs e)
@@ -131,6 +137,7 @@ namespace ProyectoVacunacionCovid.View
                             dgvWaitingQueue.Refresh();
                             dgvWaitingQueue.Update();
                             CitizenOnObservation.Add(selectedItem);
+                            TimeCounterPerCitizen.Add(MapperC.MapCitizenToCitizenTimer(selectedItem));
                            
                             UpdateDgvWaitingQueue();
                         }
@@ -168,8 +175,6 @@ namespace ProyectoVacunacionCovid.View
             dgvWaitingQueue.DataSource = null;
             dgvWaitingQueue.DataSource = CitizenOnObservation;
 
-            
-
             //Configurando columna de botones en dgv
             DataGridViewButtonColumn buttoms = new DataGridViewButtonColumn();
             buttoms.UseColumnTextForButtonValue = true;
@@ -182,8 +187,8 @@ namespace ProyectoVacunacionCovid.View
             dgvWaitingQueue.Columns[1].HeaderText = "Nombre";
 
         }
-
-        private void AddTimeToCitizen()
+        //Aniade un segundo en el contador de cada ciudadano en observacion
+        private void AddTimeToCitizens()
         {
             if (TimeCounterPerCitizen == null)
                 return;
@@ -196,19 +201,34 @@ namespace ProyectoVacunacionCovid.View
             {
                 var citizenSelected = dgvWaitingQueue.SelectedRows[0].DataBoundItem as CitizenVm;
                 SecundaryEffect secEffect = cmbSecundaryEffects.SelectedItem as SecundaryEffect;
-                if(MessageBox.Show($"Registrar {secEffect.SecundaryEffect1}, en {citizenSelected.Name}","Nuevo Efecto Secundario",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                var minute = TimeCounterPerCitizen.Find(c => c.Dui == citizenSelected.Dui).TimeMinutes;
+
+                if(MessageBox.Show($"Registrar {secEffect.SecundaryEffect1} en {citizenSelected.Name} {minute} minutos despues de la inyeccion.","Nuevo Efecto Secundario",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    if (dgvWaitingQueue.CurrentRow == null) return;
 
-                }
-                    
-                if (dgvWaitingQueue.CurrentRow == null) return;
+                    using(var db = new Proyecto_VacunacionContext()) 
+                    {
+                        var appointmentsDb = db.Appointments.ToList();
+                        try
+                        {
+                            var activeAppointment = appointmentsDb.Find(a => (a.DuiCitizen == citizenSelected.Dui) && (a.DateHourProcessed == null));
 
-                using(var db = new Proyecto_VacunacionContext()) 
-                {
-                    var appoimentEffectDB = db.AppointmentEffects.ToList();
 
+                            var appointment = new AppointmentEffect(minute, secEffect.Id, activeAppointment.Id);
 
-                }
+                            //Actualizando DB
+                            db.Add(appointment);
+                            db.SaveChanges();
+
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Cita no disponible", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                }                   
             }
         }
     }

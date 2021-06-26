@@ -206,6 +206,7 @@ namespace ProyectoVacunacionCovid.View
             // 
             // cmbSecundaryEffects
             // 
+            this.cmbSecundaryEffects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecundaryEffects.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbSecundaryEffects.FormattingEnabled = true;
             this.cmbSecundaryEffects.Location = new System.Drawing.Point(16, 69);
