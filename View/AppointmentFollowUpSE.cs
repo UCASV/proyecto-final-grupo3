@@ -11,11 +11,15 @@ using ProyectoVacunacionCovid.VaccinationContext;
 using ProyectoVacunacionCovid.Models;
 using ProyectoVacunacionCovid.View;
 
+
 namespace ProyectoVacunacionCovid
 {
     public partial class AppointmentFollowUpSE : Form
     {
+     
         public frmVaccinationProcess VaccinationProcess { get; set; }
+        static public List<Citizen> CitizensQueueList;
+
         public AppointmentFollowUpSE()
         {
             InitializeComponent();
@@ -23,12 +27,15 @@ namespace ProyectoVacunacionCovid
             
         }
 
-        //inicializando lista de cola de espera
-        static public List<Citizen> CitizensQueueList;
+       
+
         static public void InstanceQueue()
         {
-            CitizensQueueList = new List<Citizen>();
+            
         }
+
+        //inicializando lista de cola de espera
+       
 
         private void btnBuscarSeguimiento_Click(object sender, EventArgs e)
         {
@@ -37,15 +44,17 @@ namespace ProyectoVacunacionCovid
 
             List<Citizen> residents = db.Citizens.ToList();
             List<Appointment> appointmentsList = db.Appointments.ToList();
+            
 
 
             try
             {
                 int dui = int.Parse(txtBuscarSeguimiento.Text);
-
                 bool found = residents
                     .Where(r => r.Dui == dui)
                     .ToList().Count() > 0;
+
+               
 
                 /*bool hasAppt = appointmentsList
                     .Where(appt => appt.DuiCitizen == dui)
@@ -56,7 +65,10 @@ namespace ProyectoVacunacionCovid
                 if (found)
                 {
 
-                    MessageBox.Show("¡El ciudadano es elegble, bienvenido!", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+   
+                    MessageBox.Show("¡El ciudadano es elegible, bienvenido!", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var ciudadano = db.Citizens.FirstOrDefault(c => c.Dui == dui);
+                    CitizenWaitingQueue.AddCitizenOnQueue(ciudadano);
                     tabSeguimientoCitas.SelectedIndex = 1;
 
                 }
@@ -86,7 +98,10 @@ namespace ProyectoVacunacionCovid
             tabSeguimientoCitas.SizeMode = TabSizeMode.Fixed;
             tabSeguimientoCitas.TabStop = false;
             ControlBox = true;
+
+            CitizenWaitingQueue.InstanceQueue();
             
+
         }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)

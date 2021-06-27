@@ -7,6 +7,8 @@ namespace ProyectoVacunacionCovid.VaccinationContext
 {
     public partial class Citizen
     {
+       
+
         public Citizen()
         {
             Appointments = new HashSet<Appointment>();
