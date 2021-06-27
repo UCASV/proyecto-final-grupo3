@@ -82,8 +82,10 @@ namespace ProyectoVacunacionCovid
         private void AppointmentFollowUpSE_Load_1(object sender, EventArgs e)
         {
             tabSeguimientoCitas.ItemSize = new Size(0, 1);
+
             tabSeguimientoCitas.SizeMode = TabSizeMode.Fixed;
             tabSeguimientoCitas.TabStop = false;
+            ControlBox = true;
             
         }
 
@@ -101,6 +103,12 @@ namespace ProyectoVacunacionCovid
         {
             var vaccinationProcessAction = new frmVaccinationProcess();
             vaccinationProcessAction.Show();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            tabSeguimientoCitas.SelectedIndex = 0;
+            txtBuscarSeguimiento.Text = null;
         }
     }
 }
