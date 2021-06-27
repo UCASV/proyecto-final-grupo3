@@ -21,12 +21,14 @@ namespace ProyectoVacunacionCovid.View
         public List<CitizenVm> CitizenQueueVm { get; set; }
         public List<CitizenVm> CitizenOnObservation { get; set; }
         public List<CitizenTimer> CitizenTimerCounter { get; set; }
+        public List<Citizen> CitizenQueue { get; set; }
         public frmVaccinationProcess()
         {
             InitializeComponent();
             CitizenQueueVm = new List<CitizenVm>();
             CitizenOnObservation = new List<CitizenVm>();
             CitizenTimerCounter = new List<CitizenTimer>();
+            CitizenQueue = new List<Citizen>();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -42,7 +44,7 @@ namespace ProyectoVacunacionCovid.View
             tabMain.SizeMode = TabSizeMode.Fixed;
             tabMain.TabStop = false;
 
-            //DatagridView no se actualiza correctamente en segundo plano
+            //Evita errores de generacion de datagridview
             tabPage2.BringToFront();
             tabPage2.Show();
             tabPage1.BringToFront();
@@ -53,21 +55,13 @@ namespace ProyectoVacunacionCovid.View
         private void LoadData()
         {
             var SecundaryEffectsList = new List<SecundaryEffect>();
-            var CitizenQueue = new List<Citizen>();
             Models.CitizenWaitingQueue.InstanceQueue();
-
-
             
-            //dgvDatasource           
+            //dgv Datasource           
             using (var db = new Proyecto_VacunacionContext())
             {
                 try
-                {
-                    //CitizenQueue = db.Citizens.ToList();
-                    Models.CitizenWaitingQueue.AddCitizenOnQueue(db.Citizens.FirstOrDefault(c => c.Dui == 1));
-                    Models.CitizenWaitingQueue.AddCitizenOnQueue(db.Citizens.FirstOrDefault(c => c.Dui == 2));
-                    Models.CitizenWaitingQueue.AddCitizenOnQueue(db.Citizens.FirstOrDefault(c => c.Dui == 3));
-                    CitizenQueue = Models.CitizenWaitingQueue.CitizensList;
+                {                    
                     SecundaryEffectsList = db.SecundaryEffects.ToList();
                 }
                 catch (Exception)
@@ -75,10 +69,7 @@ namespace ProyectoVacunacionCovid.View
                     MessageBox.Show("Error en base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     throw;
                 }
-                    foreach (var c in CitizenQueue)
-                    {
-                        CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));
-                    }
+                    
             }
             //Following methon causes exception on indexrow
             //UpdateDgvWaitingQueue();
@@ -288,6 +279,16 @@ namespace ProyectoVacunacionCovid.View
             dgvWaitingQueue.DataSource = null;
             CitizenOnObservation.Remove(citizenSelected);
             UpdateDgvWaitingQueue();
+        }
+
+        private void frmVaccinationProcess_Activated(object sender, EventArgs e)
+        {
+            //Actualizar lista de espera antes de vacunacion
+            CitizenQueue = Models.CitizenWaitingQueue.CitizensList;
+            foreach (var c in CitizenQueue)
+            {
+                if(!CitizenQueue.Contains(c)) CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));                
+            }
         }
     }
 }

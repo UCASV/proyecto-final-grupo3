@@ -388,6 +388,7 @@ namespace ProyectoVacunacionCovid.View
             this.Name = "frmVaccinationProcess";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proceso de Vacunacion";
+            this.Activated += new System.EventHandler(this.frmVaccinationProcess_Activated);
             this.Load += new System.EventHandler(this.frmVaccinationProcess_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
