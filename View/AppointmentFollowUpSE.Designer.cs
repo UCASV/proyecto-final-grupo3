@@ -40,28 +40,33 @@ namespace ProyectoVacunacionCovid
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.g4wrtw45yh = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnProcesoVacunacion2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dgvUserInfo = new System.Windows.Forms.DataGridView();
             this.tabSeguimientoCitas.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabPage3.SuspendLayout();
+            this.g4wrtw45yh.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUserInfo)).BeginInit();
             this.SuspendLayout();
             // 
             // tabSeguimientoCitas
             // 
             this.tabSeguimientoCitas.Controls.Add(this.tabPage1);
-            this.tabSeguimientoCitas.Controls.Add(this.tabPage3);
+            this.tabSeguimientoCitas.Controls.Add(this.g4wrtw45yh);
             this.tabSeguimientoCitas.Location = new System.Drawing.Point(4, 3);
             this.tabSeguimientoCitas.Margin = new System.Windows.Forms.Padding(0);
             this.tabSeguimientoCitas.Name = "tabSeguimientoCitas";
@@ -213,17 +218,18 @@ namespace ProyectoVacunacionCovid
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // tabPage3
+            // g4wrtw45yh
             // 
-            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
-            this.tabPage3.Controls.Add(this.tableLayoutPanel4);
-            this.tabPage3.Controls.Add(this.tableLayoutPanel3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(758, 792);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.g4wrtw45yh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
+            this.g4wrtw45yh.Controls.Add(this.tableLayoutPanel5);
+            this.g4wrtw45yh.Controls.Add(this.tableLayoutPanel4);
+            this.g4wrtw45yh.Controls.Add(this.tableLayoutPanel3);
+            this.g4wrtw45yh.Location = new System.Drawing.Point(4, 24);
+            this.g4wrtw45yh.Name = "g4wrtw45yh";
+            this.g4wrtw45yh.Padding = new System.Windows.Forms.Padding(3);
+            this.g4wrtw45yh.Size = new System.Drawing.Size(758, 792);
+            this.g4wrtw45yh.TabIndex = 2;
+            this.g4wrtw45yh.Text = "tabPage3";
             // 
             // tableLayoutPanel4
             // 
@@ -311,6 +317,46 @@ namespace ProyectoVacunacionCovid
             this.label2.Text = "Ingrese número de DUI";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Controls.Add(this.label5, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.dgvUserInfo, 1, 1);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(238, 37);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 4;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.78947F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.84211F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.78947F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.57895F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(514, 641);
+            this.tableLayoutPanel5.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(54, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(405, 36);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "   Información del usuario";
+            // 
+            // dgvUserInfo
+            // 
+            this.dgvUserInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUserInfo.Location = new System.Drawing.Point(54, 104);
+            this.dgvUserInfo.Name = "dgvUserInfo";
+            this.dgvUserInfo.RowTemplate.Height = 25;
+            this.dgvUserInfo.Size = new System.Drawing.Size(405, 230);
+            this.dgvUserInfo.TabIndex = 1;
+            // 
             // AppointmentFollowUpSE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -332,10 +378,13 @@ namespace ProyectoVacunacionCovid
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabPage3.ResumeLayout(false);
+            this.g4wrtw45yh.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUserInfo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -352,7 +401,7 @@ namespace ProyectoVacunacionCovid
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage g4wrtw45yh;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -360,5 +409,8 @@ namespace ProyectoVacunacionCovid
         private System.Windows.Forms.Button btnProcesoVacunacion2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dgvUserInfo;
     }
 }

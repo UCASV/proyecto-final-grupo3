@@ -4,6 +4,12 @@
     <Compile Update="View\AppointmentFollowUpSE.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\RegistroCita.cs">
       <SubType>Form</SubType>
     </Compile>

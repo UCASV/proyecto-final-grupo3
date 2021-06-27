@@ -33,19 +33,16 @@ namespace ProyectoVacunacionCovid
         {
             
         }
-
-        //inicializando lista de cola de espera
        
+      
+
 
         private void btnBuscarSeguimiento_Click(object sender, EventArgs e)
         {
 
             var db = new Proyecto_VacunacionContext();
-
             List<Citizen> residents = db.Citizens.ToList();
             List<Appointment> appointmentsList = db.Appointments.ToList();
-            
-
 
             try
             {
@@ -56,16 +53,15 @@ namespace ProyectoVacunacionCovid
 
                
 
-                /*bool hasAppt = appointmentsList
+                bool eligible = appointmentsList
                     .Where(appt => appt.DuiCitizen == dui)
-                    .ToList().Count() > 0;*/
+                    .ToList().Count() <= 1;
 
 
 
-                if (found)
+                if (found && eligible)
                 {
 
-   
                     MessageBox.Show("¡El ciudadano es elegible, bienvenido!", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     var ciudadano = db.Citizens.FirstOrDefault(c => c.Dui == dui);
                     CitizenWaitingQueue.AddCitizenOnQueue(ciudadano);
@@ -100,14 +96,24 @@ namespace ProyectoVacunacionCovid
             ControlBox = true;
 
             CitizenWaitingQueue.InstanceQueue();
-            
+
+            dgvUserInfo.DataSource = getAppointmentsList(); 
 
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+
+        private DataTable getAppointmentsList()
         {
 
+            DataTable apptDataTable = new DataTable();
+
+
+
+
+
+            return apptDataTable;
         }
+
 
         private void btnProcesoVacunacion_Click(object sender, EventArgs e)
         {
@@ -124,5 +130,6 @@ namespace ProyectoVacunacionCovid
             tabSeguimientoCitas.SelectedIndex = 0;
             txtBuscarSeguimiento.Text = null;
         }
+
     }
 }
