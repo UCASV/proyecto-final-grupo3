@@ -169,7 +169,7 @@ namespace ProyectoVacunacionCovid
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar Sesion";
-            this.Load += new System.EventHandler(this.frmLogin_Load);
+            
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
