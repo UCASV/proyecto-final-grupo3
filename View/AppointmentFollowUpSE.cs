@@ -101,8 +101,7 @@ namespace ProyectoVacunacionCovid
 
         private void btnProcesoVacunacion2_Click(object sender, EventArgs e)
         {
-            var vaccinationProcessAction = new frmVaccinationProcess();
-            vaccinationProcessAction.Show();
+            VaccinationProcess.Show();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
