@@ -55,7 +55,6 @@ namespace ProyectoVacunacionCovid.View
         private void LoadData()
         {
             var SecundaryEffectsList = new List<SecundaryEffect>();
-            Models.CitizenWaitingQueue.InstanceQueue();
             
             //dgv Datasource           
             using (var db = new Proyecto_VacunacionContext())
@@ -73,7 +72,6 @@ namespace ProyectoVacunacionCovid.View
             }
             //Following methon causes exception on indexrow
             //UpdateDgvWaitingQueue();
-            UpdateDgvCitizen();
             //Loading SecundaryEffects on cmb
             //loading data on comboBox
             cmbSecundaryEffects.DataSource = SecundaryEffectsList;
@@ -318,22 +316,15 @@ namespace ProyectoVacunacionCovid.View
 
         private void frmVaccinationProcess_Activated(object sender, EventArgs e)
         {
-            //Actualizar lista de espera antes de vacunacion
-            CitizenQueue = Models.CitizenWaitingQueue.CitizensList;
-            foreach (var c in CitizenQueue)
+            foreach (var c in Models.CitizenWaitingQueue.CitizensList)
             {
-                if(!CitizenQueue.Contains(c)) CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));                
+                if (!CitizenQueueVm.Exists(e => e.Dui == c.Dui))
+                {
+                    dgvWaitingCitizen.DataSource = null;
+                    CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));
+                    UpdateDgvCitizen();
+                }
             }
-        }
-
-        private void prueba()
-        {
-            //Este es el dui del textbox
-            int DuiDelTextBox = 1;
-
-            var db = new Proyecto_VacunacionContext();
-            var ciudadano = db.Citizens.FirstOrDefault(c => c.Dui == DuiDelTextBox);
-            Models.CitizenWaitingQueue.AddCitizenOnQueue(ciudadano);
         }
     }
 }
