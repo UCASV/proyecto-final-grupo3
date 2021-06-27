@@ -21,9 +21,9 @@ namespace ProyectoVacunacionCovid.Models
             CitizensList.Add(c);
         }
 
-        static public void RemoveCitizenOnQueue(Citizen c)
+        static public void RemoveCitizenOnQueue(int dui)
         {
-            CitizensList.Remove(c);
+            CitizensList.Remove(CitizensList.FirstOrDefault(c => c.Dui == dui));
         }
     }
 }

@@ -136,6 +136,7 @@ namespace ProyectoVacunacionCovid.View
 
                             //Actualizando dgv y lista de pacientes en espera
                             dgvWaitingQueue.DataSource = null;
+                            Models.CitizenWaitingQueue.RemoveCitizenOnQueue(selectedItem.Dui);
                             dgvWaitingQueue.Refresh();
                             dgvWaitingQueue.Update();
                             CitizenOnObservation.Add(selectedItem);
@@ -215,7 +216,10 @@ namespace ProyectoVacunacionCovid.View
             }
             if(e.ColumnIndex == 3)
             {
-                ProcessCitizen();
+                var selectedItem = dgvWaitingQueue.SelectedRows[0].DataBoundItem as CitizenVm;
+                int minutes = CitizenTimerCounter.Find(c => c.Dui == selectedItem.Dui).TimeMinutes;
+                if(MessageBox.Show($"Confimacion de alta medica. \nNombre:{selectedItem.Name}\nMinutos de espera:{minutes}.\nRecuerda que lo recomendado es esperar 30 minutos.","",MessageBoxButtons.YesNo,MessageBoxIcon.Information)== DialogResult.Yes)
+                    ProcessCitizen();
             }
         }
         private void ProcessSecundaryEffect()
@@ -284,6 +288,7 @@ namespace ProyectoVacunacionCovid.View
                 bool SecondVacAvailable = appointmetCounter == 1;
 
                 if (SecondVacAvailable) ScheduleSecondVaccination(citizenSelected.Dui);
+                else MessageBox.Show("Paciente dado de alta exitosamente", "Alta medica", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             dgvWaitingQueue.DataSource = null;
