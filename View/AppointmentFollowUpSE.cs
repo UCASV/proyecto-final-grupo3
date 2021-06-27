@@ -15,9 +15,11 @@ namespace ProyectoVacunacionCovid
 {
     public partial class AppointmentFollowUpSE : Form
     {
+        public frmVaccinationProcess VaccinationProcess { get; set; }
         public AppointmentFollowUpSE()
         {
             InitializeComponent();
+            VaccinationProcess = new frmVaccinationProcess();
             
         }
 
@@ -80,6 +82,8 @@ namespace ProyectoVacunacionCovid
         private void AppointmentFollowUpSE_Load_1(object sender, EventArgs e)
         {
             tabSeguimientoCitas.ItemSize = new Size(0, 1);
+            tabSeguimientoCitas.SizeMode = TabSizeMode.Fixed;
+            tabSeguimientoCitas.TabStop = false;
             
         }
 
@@ -90,9 +94,7 @@ namespace ProyectoVacunacionCovid
 
         private void btnProcesoVacunacion_Click(object sender, EventArgs e)
         {
-            var vaccinationProcessAction = new frmVaccinationProcess();
-            vaccinationProcessAction.Show();
-            
+            VaccinationProcess.Show();            
         }
 
         private void btnProcesoVacunacion2_Click(object sender, EventArgs e)
