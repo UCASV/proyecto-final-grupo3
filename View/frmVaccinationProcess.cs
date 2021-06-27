@@ -19,22 +19,21 @@ namespace ProyectoVacunacionCovid.View
     {
 
         public List<CitizenVm> CitizenQueueVm { get; set; }
-        public List<Citizen> CitizenQueue { get; set; }
         public List<CitizenVm> CitizenOnObservation { get; set; }
-        public List<CitizenTimer> TimeCounterPerCitizen { get; set; }
+        public List<CitizenTimer> CitizenTimerCounter { get; set; }
         public frmVaccinationProcess()
         {
             InitializeComponent();
             CitizenQueueVm = new List<CitizenVm>();
             CitizenOnObservation = new List<CitizenVm>();
-            TimeCounterPerCitizen = new List<CitizenTimer>();
+            CitizenTimerCounter = new List<CitizenTimer>();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
-
+        
         private void frmVaccinationProcess_Load(object sender, EventArgs e)
         {
             waitingTimer.Enabled = true;
@@ -49,9 +48,15 @@ namespace ProyectoVacunacionCovid.View
             tabPage1.BringToFront();
             tabPage1.Show();
 
+            LoadData();
+        }
+        private void LoadData()
+        {
             var SecundaryEffectsList = new List<SecundaryEffect>();
+            var CitizenQueue = new List<Citizen>();
+            //var CitizenQueue = Models.CitizenWaitingQueue.CitizensList;
             //dgvDatasource           
-            using (var db = new Proyecto_VacunacionContext()) 
+            using (var db = new Proyecto_VacunacionContext())
             {
                 try
                 {
@@ -66,19 +71,18 @@ namespace ProyectoVacunacionCovid.View
                 foreach (var c in CitizenQueue)
                 {
                     CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));
-                }   
+                }
             }
             //Following methon causes exception on indexrow
             //UpdateDgvWaitingQueue();
             UpdateDgvCitizen();
-
             //Loading SecundaryEffects on cmb
+            //loading data on comboBox
             cmbSecundaryEffects.DataSource = SecundaryEffectsList;
             cmbSecundaryEffects.DisplayMember = "SecundaryEffect1";
             cmbSecundaryEffects.ValueMember = "Id";
             cmbSecundaryEffects.Text = "-Seleccionar-";
         }
-
         private void waitingTimer_Tick(object sender, EventArgs e)
         {
             lblTimer.Text = DateTime.Now.ToString("hh:mm tt");
@@ -126,10 +130,10 @@ namespace ProyectoVacunacionCovid.View
                         {
                             //Seteando hora de vacunacion de elemento selecionado
                             var appoinmentDb = db.Appointments.ToList();
-                            var updateAp = appoinmentDb.Find(a => (a.DuiCitizen == selectedItem.Dui) && (a.DateHourVaccination == null));
-                            if(updateAp != null) updateAp.DateHourVaccination = DateTime.Now;
+                            var appointmentUpdate = appoinmentDb.Find(a => (a.DuiCitizen == selectedItem.Dui) && (a.DateHourVaccination == null));
+                            if(appointmentUpdate != null) appointmentUpdate.DateHourVaccination = DateTime.Now;
 
-                            db.Update(updateAp);
+                            db.Update(appointmentUpdate);
                             db.SaveChanges();
 
                             //Actualizando dgv y lista de pacientes en espera
@@ -137,7 +141,7 @@ namespace ProyectoVacunacionCovid.View
                             dgvWaitingQueue.Refresh();
                             dgvWaitingQueue.Update();
                             CitizenOnObservation.Add(selectedItem);
-                            TimeCounterPerCitizen.Add(MapperC.MapCitizenToCitizenTimer(selectedItem));
+                            CitizenTimerCounter.Add(MapperC.MapCitizenToCitizenTimer(selectedItem));
                            
                             UpdateDgvWaitingQueue();
                         }
@@ -198,9 +202,9 @@ namespace ProyectoVacunacionCovid.View
         //Aniade un segundo en el contador de cada ciudadano en observacion
         private void AddTimeToCitizens()
         {
-            if (TimeCounterPerCitizen == null)
+            if (CitizenTimerCounter == null)
                 return;
-            TimeCounterPerCitizen.ForEach(c => c.TimeSec++);
+            CitizenTimerCounter.ForEach(c => c.TimeSec++);
         }
 
         private void dgvWaitingQueue_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -220,10 +224,11 @@ namespace ProyectoVacunacionCovid.View
         {
             var citizenSelected = dgvWaitingQueue.SelectedRows[0].DataBoundItem as CitizenVm;
             SecundaryEffect secEffect = cmbSecundaryEffects.SelectedItem as SecundaryEffect;
-            var minutes = TimeCounterPerCitizen.Find(c => c.Dui == citizenSelected.Dui).TimeMinutes;
+            var minutes = CitizenTimerCounter.Find(c => c.Dui == citizenSelected.Dui).TimeMinutes;
 
             if (MessageBox.Show($"Registrar {secEffect.SecundaryEffect1} en {citizenSelected.Name} {minutes} minutos despues de la inyeccion.", "Nuevo Efecto Secundario", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+
                 if (dgvWaitingQueue.CurrentRow == null) return;
 
                 using (var db = new Proyecto_VacunacionContext())
@@ -232,22 +237,16 @@ namespace ProyectoVacunacionCovid.View
                     try
                     {
                         var activeAppointment = appointmentsDb.Find(a => (a.DuiCitizen == citizenSelected.Dui) && (a.DateHourProcessed == null));
-
-
-                        //var appointment = new AppointmentEffect(minutes, secEffect.Id, activeAppointment.Id);
-
                         var appointment = new AppointmentEffect
                         {
                             Minute = minutes,
                             IdSecundaryEffect = secEffect.Id,
                             IdAppointment = activeAppointment.Id
-
                         };
 
                         //Actualizando DB
                         db.Add(appointment);
                         db.SaveChanges();
-
                     }
                     catch (Exception)
                     {
