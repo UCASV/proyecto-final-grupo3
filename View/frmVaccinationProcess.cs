@@ -275,10 +275,45 @@ namespace ProyectoVacunacionCovid.View
                 {
                     MessageBox.Show("Error al establecer conexion con base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+                //Validacion si ciudadano aplica a segunda dosis
+                int appointmetCounter = 0;
+
+                appointmentnDb.ForEach(c =>
+                {
+                    if (c.DuiCitizen == citizenSelected.Dui) appointmetCounter++;
+                });
+                bool SecondVacAvailable = appointmetCounter == 1;
+
+                if (SecondVacAvailable) ScheduleSecondVaccination(citizenSelected.Dui);
+
             }
             dgvWaitingQueue.DataSource = null;
             CitizenOnObservation.Remove(citizenSelected);
             UpdateDgvWaitingQueue();
+        }
+
+        private void ScheduleSecondVaccination(int CitizenId)
+        {
+            var db = new Proyecto_VacunacionContext();
+            var newAppointment = new Appointment
+            {
+                DuiCitizen = CitizenId,
+                DateHourSchedule = DateTime.Now.AddDays(30),
+                IdCabin = 1
+            };
+            try
+            {
+                db.Add(newAppointment);
+                db.SaveChanges();
+                MessageBox.Show($"Programacion de segunda dosis\nDetalles de la cita:\nFecha: " + DateTime.Now.AddDays(30).ToString("dd/mm/yy") + "\nHora:" + DateTime.Now.ToString("hh:mm tt"), "Programcion Segunda Dosis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error en conexion a base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                throw;
+            }
         }
 
         private void frmVaccinationProcess_Activated(object sender, EventArgs e)
@@ -289,6 +324,16 @@ namespace ProyectoVacunacionCovid.View
             {
                 if(!CitizenQueue.Contains(c)) CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));                
             }
+        }
+
+        private void prueba()
+        {
+            //Este es el dui del textbox
+            int DuiDelTextBox = 1;
+
+            var db = new Proyecto_VacunacionContext();
+            var ciudadano = db.Citizens.FirstOrDefault(c => c.Dui == DuiDelTextBox);
+            Models.CitizenWaitingQueue.AddCitizenOnQueue(ciudadano);
         }
     }
 }
