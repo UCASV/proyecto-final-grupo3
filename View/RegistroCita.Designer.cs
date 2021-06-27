@@ -41,7 +41,6 @@ namespace Proyecto
             this.label4 = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDUI = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -50,6 +49,7 @@ namespace Proyecto
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.txtDUI = new System.Windows.Forms.TextBox();
             this.btnContinuar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -64,9 +64,9 @@ namespace Proyecto
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(579, 222);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(322, 30);
+            this.label1.Size = new System.Drawing.Size(336, 30);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Ingresa tu número de DUI:";
+            this.label1.Text = "Ingresa los siguientes datos";
             // 
             // pictureBox1
             // 
@@ -212,13 +212,6 @@ namespace Proyecto
             this.label3.Text = "Nombre:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtDUI
-            // 
-            this.txtDUI.Location = new System.Drawing.Point(264, 3);
-            this.txtDUI.Name = "txtDUI";
-            this.txtDUI.Size = new System.Drawing.Size(208, 23);
-            this.txtDUI.TabIndex = 4;
-            // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(264, 38);
@@ -312,6 +305,13 @@ namespace Proyecto
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(208, 23);
             this.txtCorreo.TabIndex = 8;
+            // 
+            // txtDUI
+            // 
+            this.txtDUI.Location = new System.Drawing.Point(264, 3);
+            this.txtDUI.Name = "txtDUI";
+            this.txtDUI.Size = new System.Drawing.Size(208, 23);
+            this.txtDUI.TabIndex = 4;
             // 
             // btnContinuar
             // 
