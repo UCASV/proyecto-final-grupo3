@@ -45,17 +45,27 @@ namespace Proyecto
                         var DB = new Proyecto_VacunacionContext();
                         var Iref = cmbInstitution.SelectedItem as Institution;
                         Nombre.IdInstitution = Iref.Id;
-                       
-                        
+
+
                         var Aref = cmbMunicipio.SelectedItem as Address;
-                        Nombre.IdAddress  = Aref.Id;
-                  
+                        Nombre.IdAddress = Aref.Id;
+                        var Eref = clbEnfermedades.CheckedItems;
+                        
+                        foreach (ChronicleDisease cd in Eref) 
+                        {
+                            var usb = new UserDisease()
+                            {
+                                DuiCitizen = Nombre.Dui,
+                                IdChronicleDisease = cd.Id
+                            };
+                            DB.Add(usb);
+                                
+                        };
+                       
+                 
 
                         DB.Add(Nombre);
-                        DB.SaveChanges();
-
-
-                       
+                        DB.SaveChanges();   
 
                     }
                     else MessageBox.Show("Ingrese un correo valido.", "Proyecto Vacuanación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -78,6 +88,12 @@ namespace Proyecto
             cmbDepartamento.DataSource = Load;
             cmbDepartamento.DisplayMember = "City1";
             cmbDepartamento.ValueMember = "Id";
+
+            var Disease = DB.ChronicleDiseases.ToList();
+            clbEnfermedades.DataSource = Disease;
+            clbEnfermedades.DisplayMember = "ChronicleDisease1";
+            clbEnfermedades.ValueMember = "Id";
+
         }
 
         private void cmbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
