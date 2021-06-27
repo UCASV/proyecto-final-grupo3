@@ -27,11 +27,14 @@ namespace Proyecto
         private void btnContinuar_Click(object sender, EventArgs e)
         {
             var duiFormat = new Regex("^[0-9]{8}[0-9]{1}$");
-                if (duiFormat.IsMatch(txtDUI.Text)){
+            if (duiFormat.IsMatch(txtDUI.Text))
+            {
                 var telFormat = new Regex("^[267]{1}[0-9]{7}$");
-                    if (telFormat.IsMatch(txtTelefono.Text)){
+                if (telFormat.IsMatch(txtTelefono.Text))
+                {
                     var correoFormat = new Regex(@"^[^\s@]+@[^\s@]+\.[^\s@]+$");
-                    if (correoFormat.IsMatch(txtCorreo.Text)) {
+                    if (correoFormat.IsMatch(txtCorreo.Text))
+                    {
                         Citizen Nombre = new Citizen()
                         {
                             Name = txtNombre.Text,
@@ -39,41 +42,44 @@ namespace Proyecto
                             PhoneNumber = txtTelefono.Text,
                             Email = txtCorreo.Text,
                             DateOfBirth = dtpNacimiento.Value
-
-
                         };
                         var DB = new Proyecto_VacunacionContext();
                         var Iref = cmbInstitution.SelectedItem as Institution;
                         Nombre.IdInstitution = Iref.Id;
 
+                        var Cref = cmbMunicipio.SelectedItem as City;
+                        var Aref = new Address()
+                        {
+                            Location = txtLocalidad.Text,
+                            IdCity = Cref.Id
+                        };
 
-                        var Aref = cmbMunicipio.SelectedItem as Address;
                         Nombre.IdAddress = Aref.Id;
                         var Eref = clbEnfermedades.CheckedItems;
-                        
+                        UserDisease usd;
+
                         foreach (ChronicleDisease cd in Eref) 
                         {
-                            var usb = new UserDisease()
+                            usd = new UserDisease()
                             {
                                 DuiCitizen = Nombre.Dui,
                                 IdChronicleDisease = cd.Id
                             };
-                            DB.Add(usb);
-                                
-                        };
-                       
-                 
 
+                            DB.Add(usd);
+                        };
                         DB.Add(Nombre);
                         DB.SaveChanges();   
-
                     }
-                    else MessageBox.Show("Ingrese un correo valido.", "Proyecto Vacuanación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    else MessageBox.Show("Ingrese un teléfono valido.", "Proyecto Vacuanación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    else
+                        MessageBox.Show("Ingrese un correo valido.", "Proyecto Vacuanación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                else MessageBox.Show("Ingrese un DUI valido.", "Proyecto Vacuanación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
+                else
+                    MessageBox.Show("Ingrese un teléfono valido.", "Proyecto Vacuanación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+                MessageBox.Show("Ingrese un DUI valido.", "Proyecto Vacuanación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            
         }
 
         private void RegistroCita_Load(object sender, EventArgs e)
@@ -104,7 +110,6 @@ namespace Proyecto
             cmbMunicipio.DataSource = Conexion;
             cmbMunicipio.DisplayMember = "State";
             cmbMunicipio.ValueMember = "Id";
-            
         }
     }
 }

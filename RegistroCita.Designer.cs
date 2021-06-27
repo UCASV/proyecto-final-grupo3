@@ -45,6 +45,8 @@ namespace Proyecto
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblLocalidad = new System.Windows.Forms.Label();
+            this.txtLocalidad = new System.Windows.Forms.TextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtDUI = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -81,35 +83,38 @@ namespace Proyecto
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.94737F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.05263F));
-            this.tableLayoutPanel1.Controls.Add(this.clbEnfermedades, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dtpNacimiento, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtTelefono, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtDUI, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtNombre, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.txtCorreo, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.txtDUI, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.cmbInstitution, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtLocalidad, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblLocalidad, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3); 
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtTelefono, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.dtpNacimiento, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.txtCorreo, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label8, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.cmbInstitution, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.clbEnfermedades, 1, 8);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(448, 243);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.04972F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.04972F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.04972F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.04972F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.04972F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.04972F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.04972F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.65193F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(555, 445);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
@@ -120,7 +125,7 @@ namespace Proyecto
             this.clbEnfermedades.Location = new System.Drawing.Point(307, 346);
             this.clbEnfermedades.Name = "clbEnfermedades";
             this.clbEnfermedades.Size = new System.Drawing.Size(245, 96);
-            this.clbEnfermedades.TabIndex = 5;
+            this.clbEnfermedades.TabIndex = 11;
             // 
             // tableLayoutPanel2
             // 
@@ -134,7 +139,7 @@ namespace Proyecto
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(245, 29);
-            this.tableLayoutPanel2.TabIndex = 5;
+            this.tableLayoutPanel2.TabIndex = 4;
             // 
             // cmbDepartamento
             // 
@@ -161,7 +166,7 @@ namespace Proyecto
             this.dtpNacimiento.Location = new System.Drawing.Point(307, 199);
             this.dtpNacimiento.Name = "dtpNacimiento";
             this.dtpNacimiento.Size = new System.Drawing.Size(245, 23);
-            this.dtpNacimiento.TabIndex = 5;
+            this.dtpNacimiento.TabIndex = 8;
             this.dtpNacimiento.Value = new System.DateTime(2021, 6, 23, 22, 41, 52, 0);
             // 
             // label9
@@ -190,6 +195,29 @@ namespace Proyecto
             this.label5.Text = "Teléfono:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblLocalidad
+            // 
+            this.lblLocalidad.AutoSize = true;
+            this.lblLocalidad.BackColor = System.Drawing.Color.Transparent;
+            this.lblLocalidad.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblLocalidad.ForeColor = System.Drawing.Color.White;
+            this.lblLocalidad.Location = new System.Drawing.Point(3, 98);
+            this.lblLocalidad.Name = "lblLocalidad";
+            this.lblLocalidad.Size = new System.Drawing.Size(112, 24);
+            this.lblLocalidad.TabIndex = 11;
+            this.lblLocalidad.Text = "Dirección:";
+            this.lblLocalidad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtLocalidad
+            // 
+            this.txtLocalidad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLocalidad.Location = new System.Drawing.Point(307, 248);
+            this.txtLocalidad.Name = "txtLocalidad";
+            this.txtLocalidad.Size = new System.Drawing.Size(245, 23);
+            this.txtLocalidad.TabIndex = 3;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -200,7 +228,7 @@ namespace Proyecto
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 24);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Dirección:";
+            this.label4.Text = "Municipio:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtTelefono
@@ -234,7 +262,7 @@ namespace Proyecto
             this.txtNombre.Location = new System.Drawing.Point(307, 52);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(245, 23);
-            this.txtNombre.TabIndex = 5;
+            this.txtNombre.TabIndex = 2;
             // 
             // label2
             // 
@@ -271,7 +299,7 @@ namespace Proyecto
             this.txtCorreo.Location = new System.Drawing.Point(307, 248);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(245, 23);
-            this.txtCorreo.TabIndex = 8;
+            this.txtCorreo.TabIndex = 9;
             // 
             // txtDUI
             // 
@@ -281,7 +309,7 @@ namespace Proyecto
             this.txtDUI.Location = new System.Drawing.Point(307, 3);
             this.txtDUI.Name = "txtDUI";
             this.txtDUI.Size = new System.Drawing.Size(245, 23);
-            this.txtDUI.TabIndex = 4;
+            this.txtDUI.TabIndex = 1;
             // 
             // label8
             // 
@@ -316,7 +344,7 @@ namespace Proyecto
             this.cmbInstitution.Location = new System.Drawing.Point(307, 297);
             this.cmbInstitution.Name = "cmbInstitution";
             this.cmbInstitution.Size = new System.Drawing.Size(245, 23);
-            this.cmbInstitution.TabIndex = 9;
+            this.cmbInstitution.TabIndex = 10;
             // 
             // label7
             // 
@@ -336,7 +364,7 @@ namespace Proyecto
             this.btnContinuar.Location = new System.Drawing.Point(648, 705);
             this.btnContinuar.Name = "btnContinuar";
             this.btnContinuar.Size = new System.Drawing.Size(184, 49);
-            this.btnContinuar.TabIndex = 4;
+            this.btnContinuar.TabIndex = 12;
             this.btnContinuar.Text = "Continuar";
             this.btnContinuar.UseVisualStyleBackColor = true;
             this.btnContinuar.Click += new System.EventHandler(this.btnContinuar_Click);
@@ -372,8 +400,9 @@ namespace Proyecto
         private System.Windows.Forms.TextBox txtDUI;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.TextBox txtCorreo; 
         private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.TextBox txtLocalidad;
         private System.Windows.Forms.ComboBox cmbInstution;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -392,6 +421,7 @@ namespace Proyecto
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.ComboBox cmbMunicipio;
         private System.Windows.Forms.CheckedListBox clbEnfermedades;
+        private System.Windows.Forms.Label lblLocalidad;
     }
 }
 
