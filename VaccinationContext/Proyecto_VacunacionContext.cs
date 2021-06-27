@@ -36,7 +36,7 @@ namespace ProyectoVacunacionCovid.VaccinationContext
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=localhost;Database=Proyecto_Vacunacion;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=localhost\\MSSQLSERVER01;Database=Proyecto_Vacunacion;Trusted_Connection=True;");
             }
         }
 
