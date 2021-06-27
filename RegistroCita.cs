@@ -53,6 +53,7 @@ namespace Proyecto
                             Location = txtLocalidad.Text,
                             IdCity = Cref.Id
                         };
+                        DB.Add(Aref);
 
                         Nombre.IdAddress = Aref.Id;
                         var Eref = clbEnfermedades.CheckedItems;
@@ -89,10 +90,10 @@ namespace Proyecto
             cmbInstitution.DataSource = Conexion;
             cmbInstitution.DisplayMember = "Institution1";
             cmbInstitution.ValueMember = "Id";
-          
-            var Load = DB.Cities.ToList();
+
+            var Load = DB.States.ToList();
             cmbDepartamento.DataSource = Load;
-            cmbDepartamento.DisplayMember = "City1";
+            cmbDepartamento.DisplayMember = "State1";
             cmbDepartamento.ValueMember = "Id";
 
             var Disease = DB.ChronicleDiseases.ToList();
@@ -105,8 +106,9 @@ namespace Proyecto
         private void cmbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
         {
             var DB = new Proyecto_VacunacionContext();
-            var City = cmbDepartamento.SelectedItem as City;
-            var Conexion = DB.Addresses.Where(a=> a.IdCity.Equals(City.Id)).ToList();
+            var State = cmbDepartamento.SelectedItem as State;
+            //var Conexion = DB.Addresses.Where(a=> a.IdCity.Equals(City.Id)).ToList();
+            var Conexion = State.Cities.ToList();
             cmbMunicipio.DataSource = Conexion;
             cmbMunicipio.DisplayMember = "State";
             cmbMunicipio.ValueMember = "Id";

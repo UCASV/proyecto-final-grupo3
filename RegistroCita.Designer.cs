@@ -90,9 +90,9 @@ namespace Proyecto
             this.tableLayoutPanel1.Controls.Add(this.txtDUI, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtNombre, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtLocalidad, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lblLocalidad, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblLocalidad, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3); 
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtTelefono, 1, 4);
