@@ -11,7 +11,7 @@ namespace ProyectoVacunacionCovid.Models
     {
 
         static public List<Citizen> CitizensList;
-        static void InstanceQueue()
+        static public void InstanceQueue()
         {
             CitizensList = new List<Citizen>();
         }

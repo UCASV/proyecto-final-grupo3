@@ -54,13 +54,20 @@ namespace ProyectoVacunacionCovid.View
         {
             var SecundaryEffectsList = new List<SecundaryEffect>();
             var CitizenQueue = new List<Citizen>();
-            //var CitizenQueue = Models.CitizenWaitingQueue.CitizensList;
+            Models.CitizenWaitingQueue.InstanceQueue();
+
+
+            
             //dgvDatasource           
             using (var db = new Proyecto_VacunacionContext())
             {
                 try
                 {
-                    CitizenQueue = db.Citizens.ToList();
+                    //CitizenQueue = db.Citizens.ToList();
+                    Models.CitizenWaitingQueue.AddCitizenOnQueue(db.Citizens.FirstOrDefault(c => c.Dui == 1));
+                    Models.CitizenWaitingQueue.AddCitizenOnQueue(db.Citizens.FirstOrDefault(c => c.Dui == 2));
+                    Models.CitizenWaitingQueue.AddCitizenOnQueue(db.Citizens.FirstOrDefault(c => c.Dui == 3));
+                    CitizenQueue = Models.CitizenWaitingQueue.CitizensList;
                     SecundaryEffectsList = db.SecundaryEffects.ToList();
                 }
                 catch (Exception)
@@ -68,10 +75,10 @@ namespace ProyectoVacunacionCovid.View
                     MessageBox.Show("Error en base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     throw;
                 }
-                foreach (var c in CitizenQueue)
-                {
-                    CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));
-                }
+                    foreach (var c in CitizenQueue)
+                    {
+                        CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));
+                    }
             }
             //Following methon causes exception on indexrow
             //UpdateDgvWaitingQueue();
@@ -82,6 +89,8 @@ namespace ProyectoVacunacionCovid.View
             cmbSecundaryEffects.DisplayMember = "SecundaryEffect1";
             cmbSecundaryEffects.ValueMember = "Id";
             cmbSecundaryEffects.Text = "-Seleccionar-";
+
+
         }
         private void waitingTimer_Tick(object sender, EventArgs e)
         {
