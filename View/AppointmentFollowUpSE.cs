@@ -55,7 +55,7 @@ namespace ProyectoVacunacionCovid
 
                 bool eligible = appointmentsList
                     .Where(appt => appt.DuiCitizen == dui)
-                    .ToList().Count() <= 1;
+                    .ToList().Count() <= 2;
 
 
 
@@ -64,8 +64,20 @@ namespace ProyectoVacunacionCovid
 
                     MessageBox.Show("¡El ciudadano es elegible, bienvenido!", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     var ciudadano = db.Citizens.FirstOrDefault(c => c.Dui == dui);
+                    var appt = db.Institutions.FirstOrDefault(i => i.Id == ciudadano.IdInstitution); //accediendo a la institucion que esta linkeada al dui consultado
+                    var dir = db.Addresses.FirstOrDefault(a => a.Id == ciudadano.IdAddress); //accediendo a la direccion que esta linkeada al dui consultado
                     CitizenWaitingQueue.AddCitizenOnQueue(ciudadano);
+                    
                     tabSeguimientoCitas.SelectedIndex = 1;
+
+                    lblDui.Text = Convert.ToString(ciudadano.Dui);
+                    lblNombre.Text = ciudadano.Name;
+                    lblContacto.Text = ciudadano.PhoneNumber;
+                    lblEmail.Text = ciudadano.Email;
+                    lblDOB.Text = Convert.ToString(ciudadano.DateOfBirth);
+                    lblAddress.Text = dir.Location;
+                    lblInstitution.Text = appt.Institution1;
+
 
                 }
                 else // if (found && hasAppt == false)
@@ -99,19 +111,6 @@ namespace ProyectoVacunacionCovid
 
            
 
-        }
-
-
-        private DataTable getAppointmentsList()
-        {
-
-            DataTable apptDataTable = new DataTable();
-
-
-
-
-
-            return apptDataTable;
         }
 
 
