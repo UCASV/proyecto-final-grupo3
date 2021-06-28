@@ -19,7 +19,7 @@ namespace ProyectoVacunacionCovid
             {
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);
                 Application.EnableVisualStyles();
-               // Application.SetCompatibleTextRenderingDefault(false);
+                //Application.SetCompatibleTextRenderingDefault(false);
                 //Obteniendo, desde la base de datos, la cabina que usara el programa
                 //En este caso la cabina con id = 1
                 Cabin cabin = db.Cabins.SingleOrDefault(c =>  c.Id.Equals(1));

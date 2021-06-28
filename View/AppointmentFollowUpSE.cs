@@ -97,7 +97,7 @@ namespace ProyectoVacunacionCovid
 
             CitizenWaitingQueue.InstanceQueue();
 
-            dgvUserInfo.DataSource = getAppointmentsList(); 
+           
 
         }
 
