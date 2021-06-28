@@ -196,12 +196,13 @@ namespace Proyecto
                     {
                         if (DateTime.Compare(one, l.DateHourSchedule.GetValueOrDefault()) == 0)
                         {
+                            
                             validate = false;
-                            MessageBox.Show("No es posible agendar su cita en esa fecha", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Ya hay otra cita en esta fecha", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             break;
                         }
 
-                    }
+                    };
                     if (validate)
                     {
                         var nombre = this.ciudadano.Dui;
@@ -214,6 +215,9 @@ namespace Proyecto
 
                         DB.Add(ap);
                         DB.SaveChanges();
+                        mostrarCita(ap);
+
+
 
                     }
                 }            
@@ -240,6 +244,25 @@ namespace Proyecto
             dtpCita.Value = mediaHora;
             
          
+        }
+
+        private void mostrarCita(Appointment cita)
+        {
+            tabControl.SelectedIndex = 2;
+            var DB = new Proyecto_VacunacionContext();
+            var CA = DB.Cabins.SingleOrDefault(a => a.Id.Equals(cita.IdCabin));
+            var AD = DB.Addresses.SingleOrDefault(a => a.Id.Equals(CA.IdAddress));
+            var CT = DB.Cities.SingleOrDefault(a => a.Id.Equals(AD.IdCity));
+            var ST = DB.States.SingleOrDefault(a => a.Id.Equals(CT.IdState));
+            lblNnombre.Text = this.ciudadano.Name;
+            lblNlugar.Text = $"Cabina {cita.Id}, en {AD.Location}, {CT.City1}, {ST.State1}";
+            lblNfecha.Text = cita.DateHourSchedule.ToString();
+
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

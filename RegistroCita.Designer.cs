@@ -63,6 +63,17 @@ namespace Proyecto
             this.btn2 = new System.Windows.Forms.Button();
             this.tb1 = new System.Windows.Forms.TabPage();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblNfecha = new System.Windows.Forms.Label();
+            this.lblNlugar = new System.Windows.Forms.Label();
+            this.lblNnombre = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnFinalizar = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -73,6 +84,10 @@ namespace Proyecto
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tb1.SuspendLayout();
             this.tabControl.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -242,6 +257,7 @@ namespace Proyecto
             // cmbDepartamento
             // 
             this.cmbDepartamento.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDepartamento.FormattingEnabled = true;
             this.cmbDepartamento.Location = new System.Drawing.Point(3, 3);
             this.cmbDepartamento.Name = "cmbDepartamento";
@@ -252,6 +268,7 @@ namespace Proyecto
             // cmbMunicipio
             // 
             this.cmbMunicipio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbMunicipio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMunicipio.FormattingEnabled = true;
             this.cmbMunicipio.Location = new System.Drawing.Point(142, 3);
             this.cmbMunicipio.Name = "cmbMunicipio";
@@ -346,6 +363,7 @@ namespace Proyecto
             this.cmbInstitution.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbInstitution.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInstitution.FormattingEnabled = true;
             this.cmbInstitution.Items.AddRange(new object[] {
             "Civil",
@@ -525,12 +543,167 @@ namespace Proyecto
             // 
             this.tabControl.Controls.Add(this.tb1);
             this.tabControl.Controls.Add(this.tb2);
+            this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1161, 789);
             this.tabControl.TabIndex = 14;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
+            this.tabPage2.Controls.Add(this.tableLayoutPanel6);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1153, 761);
+            this.tabPage2.TabIndex = 2;
+            this.tabPage2.Text = "tabPage2";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 3;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 1, 1);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 3;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1147, 755);
+            this.tableLayoutPanel6.TabIndex = 1;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel7.Controls.Add(this.lblNfecha, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.lblNlugar, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.lblNnombre, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.label11, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.pictureBox3, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.btnFinalizar, 0, 4);
+            this.tableLayoutPanel7.Controls.Add(this.label12, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.label13, 0, 3);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(347, 78);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 5;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(452, 598);
+            this.tableLayoutPanel7.TabIndex = 2;
+            // 
+            // lblNfecha
+            // 
+            this.lblNfecha.AutoSize = true;
+            this.lblNfecha.BackColor = System.Drawing.Color.Transparent;
+            this.lblNfecha.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNfecha.ForeColor = System.Drawing.Color.White;
+            this.lblNfecha.Location = new System.Drawing.Point(183, 447);
+            this.lblNfecha.Name = "lblNfecha";
+            this.lblNfecha.Size = new System.Drawing.Size(100, 24);
+            this.lblNfecha.TabIndex = 16;
+            this.lblNfecha.Text = "Nombre:";
+            this.lblNfecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblNlugar
+            // 
+            this.lblNlugar.AutoSize = true;
+            this.lblNlugar.BackColor = System.Drawing.Color.Transparent;
+            this.lblNlugar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNlugar.ForeColor = System.Drawing.Color.White;
+            this.lblNlugar.Location = new System.Drawing.Point(183, 268);
+            this.lblNlugar.Name = "lblNlugar";
+            this.lblNlugar.Size = new System.Drawing.Size(100, 24);
+            this.lblNlugar.TabIndex = 15;
+            this.lblNlugar.Text = "Nombre:";
+            this.lblNlugar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblNnombre
+            // 
+            this.lblNnombre.AutoSize = true;
+            this.lblNnombre.BackColor = System.Drawing.Color.Transparent;
+            this.lblNnombre.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNnombre.ForeColor = System.Drawing.Color.White;
+            this.lblNnombre.Location = new System.Drawing.Point(183, 179);
+            this.lblNnombre.Name = "lblNnombre";
+            this.lblNnombre.Size = new System.Drawing.Size(100, 24);
+            this.lblNnombre.TabIndex = 14;
+            this.lblNnombre.Text = "Nombre:";
+            this.lblNnombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(3, 179);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 24);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Nombre:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox3
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.pictureBox3, 2);
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox3.Image = global::ProyectoVacunacionCovid.Properties.Resources.logo_covid;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(446, 173);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 3;
+            this.pictureBox3.TabStop = false;
+            // 
+            // btnFinalizar
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.btnFinalizar, 2);
+            this.btnFinalizar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFinalizar.Location = new System.Drawing.Point(3, 539);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(446, 56);
+            this.btnFinalizar.TabIndex = 4;
+            this.btnFinalizar.Text = "Finalizar";
+            this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(3, 268);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(72, 24);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Lugar:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(3, 447);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(80, 24);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "Fecha:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // RegistroCita
             // 
@@ -555,6 +728,11 @@ namespace Proyecto
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tb1.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -601,6 +779,17 @@ namespace Proyecto
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btn2;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label lblNfecha;
+        private System.Windows.Forms.Label lblNlugar;
+        private System.Windows.Forms.Label lblNnombre;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnFinalizar;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }
 
