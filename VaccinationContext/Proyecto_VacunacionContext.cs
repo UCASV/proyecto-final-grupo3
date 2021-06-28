@@ -36,8 +36,7 @@ namespace ProyectoVacunacionCovid.VaccinationContext
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=localhost\\MSSQLSERVER01;Database=Proyecto_Vacunacion;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=Proyecto_Vacunacion;Trusted_Connection=True;");
             }
         }
 
@@ -129,7 +128,7 @@ namespace ProyectoVacunacionCovid.VaccinationContext
             {
                 entity.ToTable("CABIN");
 
-                entity.HasIndex(e => e.PhoneNumber, "UQ__CABIN__A1936A6B46738754")
+                entity.HasIndex(e => e.PhoneNumber, "UQ__CABIN__A1936A6BE888C01C")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -179,11 +178,11 @@ namespace ProyectoVacunacionCovid.VaccinationContext
             modelBuilder.Entity<Citizen>(entity =>
             {
                 entity.HasKey(e => e.Dui)
-                    .HasName("PK__CITIZEN__C03671B88A2CBB4B");
+                    .HasName("PK__CITIZEN__C03671B877C98A70");
 
                 entity.ToTable("CITIZEN");
 
-                entity.HasIndex(e => e.PhoneNumber, "UQ__CITIZEN__A1936A6BA547BF24")
+                entity.HasIndex(e => e.PhoneNumber, "UQ__CITIZEN__A1936A6BAB887BA2")
                     .IsUnique();
 
                 entity.Property(e => e.Dui)
@@ -225,7 +224,6 @@ namespace ProyectoVacunacionCovid.VaccinationContext
                 entity.HasOne(d => d.IdInstitutionNavigation)
                     .WithMany(p => p.Citizens)
                     .HasForeignKey(d => d.IdInstitution)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__CITIZEN__id_inst__3F466844");
             });
 
