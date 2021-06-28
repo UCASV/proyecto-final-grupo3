@@ -1,4 +1,5 @@
-﻿using ProyectoVacunacionCovid.VaccinationContext;
+﻿using Microsoft.Data.SqlClient;
+using ProyectoVacunacionCovid.VaccinationContext;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,19 +34,18 @@ namespace Proyecto
         {
             var DB = new Proyecto_VacunacionContext();
             var SC = DB.Citizens.ToList();
-            bool validate = true;
+        
             foreach (Citizen l in SC)
 
             {
-                if (l.Dui == Dui || l.PhoneNumber == tel)
+                if (l.PhoneNumber == tel || l.Dui == Dui )
                 {
-                    validate = false;
                     MessageBox.Show("El DUI o el telefono ya existe favor revisar campos", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return validate;
+                    return false;
                 }
 
             }
-            return validate;
+            return true;
         }
         private void btnContinuar_Click(object sender, EventArgs e)
         {
@@ -62,8 +62,6 @@ namespace Proyecto
                         if(validaciones(Int32.Parse(txtDUI.Text), txtTelefono.Text))
                         {
                             
-                           
-                             
                                 var Cref = cmbMunicipio.SelectedItem as City;
                                 var Aref = new Address()
                                 {
@@ -105,7 +103,21 @@ namespace Proyecto
                                 };
                                 this.ciudadano = Nombre;
                                 DB.Add(Nombre);
-                                DB.SaveChanges();
+                            try 
+                            { 
+                                DB.SaveChanges(); 
+                            }
+                            catch (SqlException exception) 
+                            {
+                                if (exception.Number == 2601)
+                                {
+                                    MessageBox.Show("El DUI o el telefono ya existe favor revisar campos", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    return;
+                                }
+                                else
+                                    throw;
+                               
+                            }
                                 tabControl.SelectedIndex = 1;
                             
                         }
