@@ -29,7 +29,24 @@ namespace Proyecto
         {
 
         }
+        private bool validaciones(int Dui, string tel)
+        {
+            var DB = new Proyecto_VacunacionContext();
+            var SC = DB.Citizens.ToList();
+            bool validate = true;
+            foreach (Citizen l in SC)
 
+            {
+                if (l.Dui == Dui || l.PhoneNumber == tel)
+                {
+                    validate = false;
+                    MessageBox.Show("El DUI o el telefono ya existe favor revisar campos", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return validate;
+                }
+
+            }
+            return validate;
+        }
         private void btnContinuar_Click(object sender, EventArgs e)
         {
             var duiFormat = new Regex("^[0-9]{8}[0-9]{1}$");
@@ -41,51 +58,58 @@ namespace Proyecto
                     var correoFormat = new Regex(@"^[^\s@]+@[^\s@]+\.[^\s@]+$");
                     if (correoFormat.IsMatch(txtCorreo.Text))
                     {
-
                         var DB = new Proyecto_VacunacionContext();
-                        var Cref = cmbMunicipio.SelectedItem as City;
-                        var Aref = new Address()
+                        if(validaciones(Int32.Parse(txtDUI.Text), txtTelefono.Text))
                         {
-                            Location = txtLocalidad.Text,
-                            IdCity = Cref.Id
-                        };
-                        
-                        DB.Add(Aref);
-                        DB.SaveChanges();
-                        var ADB = DB.Addresses.ToList().Last();
-                        Citizen Nombre = new Citizen()
-                        {
-                            Name = txtNombre.Text,
-                            Dui = Int32.Parse(txtDUI.Text),
-                            PhoneNumber = txtTelefono.Text,
-                            Email = txtCorreo.Text,
-                            DateOfBirth = dtpNacimiento.Value,
-                            IdAddress = ADB.Id
-
-
-                        };
-                        
-                        var Iref = cmbInstitution.SelectedItem as Institution;
-                        Nombre.IdInstitution = Iref.Id;
-               
-                        var Eref = clbEnfermedades.CheckedItems;
-                        UserDisease usd;
-
-                        foreach (ChronicleDisease cd in Eref) 
-                        {
-                            usd = new UserDisease()
-                            {
-                                DuiCitizen = Nombre.Dui,
-                                IdChronicleDisease = cd.Id
-                            };
                             
-                            DB.Add(usd);
+                           
+                             
+                                var Cref = cmbMunicipio.SelectedItem as City;
+                                var Aref = new Address()
+                                {
+                                    Location = txtLocalidad.Text,
+                                    IdCity = Cref.Id
+                                };
 
-                        };
-                        this.ciudadano = Nombre;
-                        DB.Add(Nombre);
-                        DB.SaveChanges();
-                        tabControl.SelectedIndex = 1;
+                                DB.Add(Aref);
+                                DB.SaveChanges();
+                                var ADB = DB.Addresses.ToList().Last();
+                                Citizen Nombre = new Citizen()
+                                {
+                                    Name = txtNombre.Text,
+                                    Dui = Int32.Parse(txtDUI.Text),
+                                    PhoneNumber = txtTelefono.Text,
+                                    Email = txtCorreo.Text,
+                                    DateOfBirth = dtpNacimiento.Value,
+                                    IdAddress = ADB.Id
+
+
+                                };
+
+                                var Iref = cmbInstitution.SelectedItem as Institution;
+                                Nombre.IdInstitution = Iref.Id;
+
+                                var Eref = clbEnfermedades.CheckedItems;
+                                UserDisease usd;
+
+                                foreach (ChronicleDisease cd in Eref)
+                                {
+                                    usd = new UserDisease()
+                                    {
+                                        DuiCitizen = Nombre.Dui,
+                                        IdChronicleDisease = cd.Id
+                                    };
+
+                                    DB.Add(usd);
+
+                                };
+                                this.ciudadano = Nombre;
+                                DB.Add(Nombre);
+                                DB.SaveChanges();
+                                tabControl.SelectedIndex = 1;
+                            
+                        }
+                        
                     }
                     else
                         MessageBox.Show("Ingrese un correo valido.", "Proyecto Vacuanación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -158,34 +182,41 @@ namespace Proyecto
             else
             {
 
-                var DB = new Proyecto_VacunacionContext();
-                var lista = DB.Appointments.Where(a => a.IdCabin.Equals(this.cabina.Id) && a.DateHourSchedule >= DateTime.Now)
-                    .OrderBy(a => a.DateHourSchedule);
-                bool validate = true; 
-                foreach (Appointment l in lista)
+                if (one.Hour < 8 || one.Hour >= 17)
                 {
-                    if  (DateTime.Compare(one, l.DateHourSchedule.GetValueOrDefault())== 0)
+                    MessageBox.Show("La cita debe ser entre las 8 am y las 16:59 pm", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    var DB = new Proyecto_VacunacionContext();
+                    var lista = DB.Appointments.Where(a => a.IdCabin.Equals(this.cabina.Id) && a.DateHourSchedule >= DateTime.Now)
+                        .OrderBy(a => a.DateHourSchedule);
+                    bool validate = true;
+                    foreach (Appointment l in lista)
                     {
-                        validate = false;
-                        MessageBox.Show("No es posible agendar su cita en esa fecha", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        break;
+                        if (DateTime.Compare(one, l.DateHourSchedule.GetValueOrDefault()) == 0)
+                        {
+                            validate = false;
+                            MessageBox.Show("No es posible agendar su cita en esa fecha", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            break;
+                        }
+
                     }
-
-                }
-                if(validate)
-                {
-                    var nombre = this.ciudadano.Dui;
-                    Appointment ap = new Appointment()
+                    if (validate)
                     {
-                        DateHourSchedule = one, IdCabin = this.cabina.Id, DuiCitizen = nombre 
-                    };
-                    
-                    DB.Add(ap);
-                    DB.SaveChanges();
+                        var nombre = this.ciudadano.Dui;
+                        Appointment ap = new Appointment()
+                        {
+                            DateHourSchedule = one,
+                            IdCabin = this.cabina.Id,
+                            DuiCitizen = nombre
+                        };
 
-                }
+                        DB.Add(ap);
+                        DB.SaveChanges();
 
-            
+                    }
+                }            
             
             }
             
