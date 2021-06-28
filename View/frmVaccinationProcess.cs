@@ -299,17 +299,18 @@ namespace ProyectoVacunacionCovid.View
         private void ScheduleSecondVaccination(int CitizenId)
         {
             var db = new Proyecto_VacunacionContext();
+            var nextAppoDate = DateTime.Now.AddDays(30);
             var newAppointment = new Appointment
             {
                 DuiCitizen = CitizenId,
-                DateHourSchedule = DateTime.Now.AddDays(30),
+                DateHourSchedule = nextAppoDate,
                 IdCabin = 1
             };
             try
             {
                 db.Add(newAppointment);
                 db.SaveChanges();
-                MessageBox.Show($"Programacion de segunda dosis\nDetalles de la cita:\nFecha: " + DateTime.Now.AddDays(30).ToString("dd/mm/yy") + "\nHora:" + DateTime.Now.ToString("hh:mm tt"), "Programcion Segunda Dosis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Programacion de segunda dosis\nDetalles de la cita:\nFecha: " + nextAppoDate.ToString("mm/dd/yy") + "\nHora:" + nextAppoDate.ToString("hh:mm tt"), "Programcion Segunda Dosis", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception)
