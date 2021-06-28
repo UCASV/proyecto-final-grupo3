@@ -91,12 +91,12 @@ namespace ProyectoVacunacionCovid
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabSeguimientoCitas.Controls.Add(this.tabPage1);
             this.tabSeguimientoCitas.Controls.Add(this.g4wrtw45yh);
-            this.tabSeguimientoCitas.Location = new System.Drawing.Point(9, 39);
+            this.tabSeguimientoCitas.Location = new System.Drawing.Point(23, 24);
             this.tabSeguimientoCitas.Margin = new System.Windows.Forms.Padding(0);
             this.tabSeguimientoCitas.Name = "tabSeguimientoCitas";
             this.tabSeguimientoCitas.Padding = new System.Drawing.Point(0, 0);
             this.tabSeguimientoCitas.SelectedIndex = 0;
-            this.tabSeguimientoCitas.Size = new System.Drawing.Size(770, 797);
+            this.tabSeguimientoCitas.Size = new System.Drawing.Size(771, 812);
             this.tabSeguimientoCitas.TabIndex = 0;
             // 
             // tabPage1
@@ -109,7 +109,7 @@ namespace ProyectoVacunacionCovid
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(762, 769);
+            this.tabPage1.Size = new System.Drawing.Size(763, 784);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -680,7 +680,7 @@ namespace ProyectoVacunacionCovid
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
-            this.ClientSize = new System.Drawing.Size(815, 845);
+            this.ClientSize = new System.Drawing.Size(816, 845);
             this.ControlBox = false;
             this.Controls.Add(this.tabSeguimientoCitas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
