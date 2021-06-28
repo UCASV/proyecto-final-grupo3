@@ -78,6 +78,7 @@ namespace ProyectoVacunacionCovid
                     lblAddress.Text = dir.Location;
                     lblInstitution.Text = appt.Institution1;
 
+                    dgvAppts.DataSource = appointmentsList;
 
                 }
                 else // if (found && hasAppt == false)

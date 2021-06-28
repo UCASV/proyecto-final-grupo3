@@ -66,6 +66,10 @@ namespace ProyectoVacunacionCovid
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dgvAppts = new System.Windows.Forms.DataGridView();
             this.tabSeguimientoCitas.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -79,6 +83,7 @@ namespace ProyectoVacunacionCovid
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppts)).BeginInit();
             this.SuspendLayout();
             // 
             // tabSeguimientoCitas
@@ -256,8 +261,12 @@ namespace ProyectoVacunacionCovid
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel5.Controls.Add(this.label14, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label13, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label15, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.dgvAppts, 1, 3);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(238, 37);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 4;
@@ -643,6 +652,54 @@ namespace ProyectoVacunacionCovid
             this.label2.Text = "Ingrese número de DUI";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(3, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(19, 101);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "   Información del usuario";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(490, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(21, 101);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "   Información del usuario";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(28, 369);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(456, 36);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Citas Programadas";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // dgvAppts
+            // 
+            this.dgvAppts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAppts.Location = new System.Drawing.Point(28, 441);
+            this.dgvAppts.Name = "dgvAppts";
+            this.dgvAppts.RowTemplate.Height = 25;
+            this.dgvAppts.Size = new System.Drawing.Size(456, 197);
+            this.dgvAppts.TabIndex = 5;
+            // 
             // AppointmentFollowUpSE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -674,6 +731,7 @@ namespace ProyectoVacunacionCovid
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppts)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -717,5 +775,9 @@ namespace ProyectoVacunacionCovid
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblDOB;
         private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridView dgvAppts;
     }
 }
