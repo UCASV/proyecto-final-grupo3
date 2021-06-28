@@ -30,7 +30,7 @@ Para correr el programa es necesario contar con la base de datos y con algunos i
 escenciales para el funcionamiento del programa.
 Se utilizo SQLServer como gestor de base de datos.
 Se debe correr el scripr "ProyectoVacunacionSQLv3.sql"
-El script "ProyectoInsercionesSQLv3" posee algunos inserts de muestra.
+Y luego el scrips de data seed "ProyectoInsercionesSQLv3".
 
 Si la base de datos fue creada correctamente y posee los datos seeds iniciales el programa podra ser ejecutado 
 al compilar la solucion. 
