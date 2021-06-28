@@ -22,13 +22,13 @@ namespace ProyectoVacunacionCovid
                 Application.SetCompatibleTextRenderingDefault(false);
                 //Obteniendo, desde la base de datos, la cabina que usara el programa
                 //En este caso la cabina con id = 1
-                Cabin cabin = db.Cabins.SingleOrDefault(c =>  c.Id.Equals(2));
+                Cabin cabin = db.Cabins.SingleOrDefault(c =>  c.Id.Equals(1));
                 //Llamando al formulario login antes que al principal
                 frmLogin login = new frmLogin(cabin);
                 login.ShowDialog();
                 //Validando si hubo login exitoso
                 if (login.SuccesLogin)
-                    Application.Run(new frmMain());
+                    Application.Run(new AppointmentFollowUpSE());
                     //En lugar de frmMain, pongan el formulario que hayan hecho
             }
         }
