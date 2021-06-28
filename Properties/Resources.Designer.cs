@@ -105,6 +105,16 @@ namespace ProyectoVacunacionCovid.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PikPng_com_escudo_de_el_salvador_5727788 {
+            get {
+                object obj = ResourceManager.GetObject("PikPng.com_escudo-de-el-salvador_5727788", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap progressBarPic {
             get {
                 object obj = ResourceManager.GetObject("progressBarPic", resourceCulture);
