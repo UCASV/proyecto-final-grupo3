@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,15 +27,6 @@ namespace ProyectoVacunacionCovid
             VaccinationProcess = new frmVaccinationProcess();
             
         }
-
-       
-
-        static public void InstanceQueue()
-        {
-            
-        }
-       
-      
 
 
         private void btnBuscarSeguimiento_Click(object sender, EventArgs e)
@@ -64,8 +56,9 @@ namespace ProyectoVacunacionCovid
 
                     MessageBox.Show("¡El ciudadano es elegible, bienvenido!", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     var ciudadano = db.Citizens.FirstOrDefault(c => c.Dui == dui);
-                    var appt = db.Institutions.FirstOrDefault(i => i.Id == ciudadano.IdInstitution); //accediendo a la institucion que esta linkeada al dui consultado
+                    var ins = db.Institutions.FirstOrDefault(i => i.Id == ciudadano.IdInstitution); //accediendo a la institucion que esta linkeada al dui consultado
                     var dir = db.Addresses.FirstOrDefault(a => a.Id == ciudadano.IdAddress); //accediendo a la direccion que esta linkeada al dui consultado
+                    var appt = db.Appointments.FirstOrDefault(p => p.DuiCitizen == ciudadano.Dui);
                     CitizenWaitingQueue.AddCitizenOnQueue(ciudadano);
                     
                     tabSeguimientoCitas.SelectedIndex = 1;
@@ -76,9 +69,11 @@ namespace ProyectoVacunacionCovid
                     lblEmail.Text = ciudadano.Email;
                     lblDOB.Text = Convert.ToString(ciudadano.DateOfBirth);
                     lblAddress.Text = dir.Location;
-                    lblInstitution.Text = appt.Institution1;
+                    lblInstitution.Text = ins.Institution1;
 
-                    dgvAppts.DataSource = appointmentsList;
+                  
+                    dgvAppts.DataSource = appointmentsList.Where(ap => ap.DuiCitizen == dui).ToList();
+                    // no funciona ---> dgvAppts.Columns["date_hour_schedule"].DataPropertyName = "DateHourSchedule";
 
                 }
                 else // if (found && hasAppt == false)
