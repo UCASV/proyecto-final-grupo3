@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using ProyectoVacunacionCovid.VaccinationContext;
 using ProyectoVacunacionCovid.Models;
 using ProyectoVacunacionCovid.View;
-
+using ProyectoVacunacionCovid.ViewModels;
 
 namespace ProyectoVacunacionCovid
 {
@@ -51,7 +51,7 @@ namespace ProyectoVacunacionCovid
 
 
 
-                if (found && eligible)
+                if (found)
                 {
 
                     MessageBox.Show("¡El ciudadano es elegible, bienvenido!", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -59,7 +59,7 @@ namespace ProyectoVacunacionCovid
                     var ins = db.Institutions.FirstOrDefault(i => i.Id == ciudadano.IdInstitution); //accediendo a la institucion que esta linkeada al dui consultado
                     var dir = db.Addresses.FirstOrDefault(a => a.Id == ciudadano.IdAddress); //accediendo a la direccion que esta linkeada al dui consultado
                     var appt = db.Appointments.FirstOrDefault(p => p.DuiCitizen == ciudadano.Dui);
-                    CitizenWaitingQueue.AddCitizenOnQueue(ciudadano);
+                    //CitizenWaitingQueue.AddCitizenOnQueue(ciudadano);
                     
                     tabSeguimientoCitas.SelectedIndex = 1;
 
@@ -71,8 +71,12 @@ namespace ProyectoVacunacionCovid
                     lblAddress.Text = dir.Location;
                     lblInstitution.Text = ins.Institution1;
 
-                  
-                    dgvAppts.DataSource = appointmentsList.Where(ap => ap.DuiCitizen == dui).ToList();
+                    var appointmentsListVm = new List<AppointmentVm>();
+
+                    appointmentsList.ForEach(a => appointmentsListVm.Add(MapperC.MapAppointmentToAppointmentVm(a)));
+
+
+                    dgvAppts.DataSource = appointmentsListVm.Where(ap => ap.DuiCitizen == dui).ToList();
                     // no funciona ---> dgvAppts.Columns["date_hour_schedule"].DataPropertyName = "DateHourSchedule";
 
                 }
@@ -124,7 +128,30 @@ namespace ProyectoVacunacionCovid
         {
             tabSeguimientoCitas.SelectedIndex = 0;
             txtBuscarSeguimiento.Text = null;
+            btnProcessCitizen.Enabled = true;
         }
 
+        private void btnProcessCitizen_Click(object sender, EventArgs e)
+        {
+            var db = new Proyecto_VacunacionContext();
+            int dui = int.Parse(txtBuscarSeguimiento.Text);
+            List<Appointment> appointmentsList = db.Appointments.ToList();
+            bool eligible = appointmentsList
+                    .Where(appt => appt.DuiCitizen == dui)
+                    .ToList().Count() <= 2;
+
+            bool flag = Models.CitizenWaitingQueue.CitizensList.Exists(c => c.Dui== dui);
+            bool appointmentAviable = appointmentsList.Exists(c => c.DuiCitizen == dui && c.DateHourVaccination == null);
+
+
+            if (eligible && !(flag) && appointmentAviable) 
+            {
+                var ciudadano = db.Citizens.FirstOrDefault(c => c.Dui == dui);
+                CitizenWaitingQueue.AddCitizenOnQueue(ciudadano);
+                btnProcessCitizen.Enabled = false;
+            }
+            else
+                MessageBox.Show($"La persona con numero de DUI {dui} ya posee la dos dosis de la vacuna o se encuentra en proceso", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

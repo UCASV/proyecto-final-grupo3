@@ -8,6 +8,7 @@ namespace ProyectoVacunacionCovid.ViewModels
 {
     public class AppointmentVm
     {
+        public int DuiCitizen { get; set; }
         public DateTime? DateHourSchedule { get; set; }
         public DateTime? DateHourVaccination { get; set; }
         public DateTime? DateHourProcessed { get; set; }

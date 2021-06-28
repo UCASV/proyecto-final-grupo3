@@ -23,6 +23,7 @@ namespace ProyectoVacunacionCovid.ViewModels
         {
             return new AppointmentVm
             {
+                DuiCitizen = a.DuiCitizen,
                 DateHourProcessed = a.DateHourProcessed,
                 DateHourSchedule = a.DateHourSchedule,
                 DateHourVaccination = a.DateHourVaccination
