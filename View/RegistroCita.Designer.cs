@@ -403,6 +403,13 @@ namespace Proyecto
             this.clbEnfermedades.Size = new System.Drawing.Size(278, 107);
             this.clbEnfermedades.TabIndex = 11;
             // 
+            // txtDUI
+            // 
+            this.txtDUI.Location = new System.Drawing.Point(264, 3);
+            this.txtDUI.Name = "txtDUI";
+            this.txtDUI.Size = new System.Drawing.Size(208, 23);
+            this.txtDUI.TabIndex = 4;
+            // 
             // btnContinuar
             // 
             this.btnContinuar.Dock = System.Windows.Forms.DockStyle.Fill;

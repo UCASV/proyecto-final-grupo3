@@ -15,12 +15,22 @@ namespace ProyectoVacunacionCovid
         [STAThread]
         static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            var DB = new Proyecto_VacunacionContext();
-            var Cabina = DB.Cabins.SingleOrDefault(c => c.Id.Equals(1));
-            Application.Run(new Proyecto.RegistroCita(Cabina));
+            using (var db = new Proyecto_VacunacionContext())
+            {
+                Application.SetHighDpiMode(HighDpiMode.SystemAware);
+                Application.EnableVisualStyles();
+                //Application.SetCompatibleTextRenderingDefault(false);
+                //Obteniendo, desde la base de datos, la cabina que usara el programa
+                //En este caso la cabina con id = 1
+                Cabin cabin = db.Cabins.SingleOrDefault(c =>  c.Id.Equals(1));
+                //Llamando al formulario login antes que al principal
+                frmLogin login = new frmLogin(cabin);
+                login.ShowDialog();
+                //Validando si hubo login exitoso
+                if (login.SuccesLogin)
+                    Application.Run(new AppointmentFollowUpSE());
+                    //En lugar de frmMain, pongan el formulario que hayan hecho
+            }
         }
     }
 }
