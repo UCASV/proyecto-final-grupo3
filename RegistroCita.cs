@@ -14,9 +14,15 @@ namespace Proyecto
 {
     public partial class RegistroCita : Form
     {
-        public RegistroCita()
+
+        public Cabin cabina;
+        public Citizen ciudadano;
+        public RegistroCita(Cabin cabina)
         {
             InitializeComponent();
+            this.cabina = cabina;
+
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,27 +41,33 @@ namespace Proyecto
                     var correoFormat = new Regex(@"^[^\s@]+@[^\s@]+\.[^\s@]+$");
                     if (correoFormat.IsMatch(txtCorreo.Text))
                     {
-                        Citizen Nombre = new Citizen()
-                        {
-                            Name = txtNombre.Text,
-                            Dui = Int32.Parse(txtDUI.Text),
-                            PhoneNumber = txtTelefono.Text,
-                            Email = txtCorreo.Text,
-                            DateOfBirth = dtpNacimiento.Value
-                        };
-                        var DB = new Proyecto_VacunacionContext();
-                        var Iref = cmbInstitution.SelectedItem as Institution;
-                        Nombre.IdInstitution = Iref.Id;
 
+                        var DB = new Proyecto_VacunacionContext();
                         var Cref = cmbMunicipio.SelectedItem as City;
                         var Aref = new Address()
                         {
                             Location = txtLocalidad.Text,
                             IdCity = Cref.Id
                         };
+                        
                         DB.Add(Aref);
+                        DB.SaveChanges();
+                        var ADB = DB.Addresses.ToList().Last();
+                        Citizen Nombre = new Citizen()
+                        {
+                            Name = txtNombre.Text,
+                            Dui = Int32.Parse(txtDUI.Text),
+                            PhoneNumber = txtTelefono.Text,
+                            Email = txtCorreo.Text,
+                            DateOfBirth = dtpNacimiento.Value,
+                            IdAddress = ADB.Id
 
-                        Nombre.IdAddress = Aref.Id;
+
+                        };
+                        
+                        var Iref = cmbInstitution.SelectedItem as Institution;
+                        Nombre.IdInstitution = Iref.Id;
+               
                         var Eref = clbEnfermedades.CheckedItems;
                         UserDisease usd;
 
@@ -66,11 +78,14 @@ namespace Proyecto
                                 DuiCitizen = Nombre.Dui,
                                 IdChronicleDisease = cd.Id
                             };
-
+                            
                             DB.Add(usd);
+
                         };
+                        this.ciudadano = Nombre;
                         DB.Add(Nombre);
-                        DB.SaveChanges();   
+                        DB.SaveChanges();
+                        tabControl.SelectedIndex = 1;
                     }
                     else
                         MessageBox.Show("Ingrese un correo valido.", "Proyecto Vacuanación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -101,17 +116,99 @@ namespace Proyecto
             clbEnfermedades.DisplayMember = "ChronicleDisease1";
             clbEnfermedades.ValueMember = "Id";
 
+            tabControl.Appearance = TabAppearance.FlatButtons;
+            tabControl.ItemSize = new Size(0, 1);
+            tabControl.SizeMode = TabSizeMode.Fixed;
+            tabControl.TabStop = false;
+
         }
 
         private void cmbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
         {
             var DB = new Proyecto_VacunacionContext();
             var State = cmbDepartamento.SelectedItem as State;
-            //var Conexion = DB.Addresses.Where(a=> a.IdCity.Equals(City.Id)).ToList();
-            var Conexion = State.Cities.ToList();
+            var Conexion = DB.Cities.Where(a=> a.IdState.Equals(State.Id)).ToList();
             cmbMunicipio.DataSource = Conexion;
-            cmbMunicipio.DisplayMember = "State";
+            cmbMunicipio.DisplayMember = "City1";
             cmbMunicipio.ValueMember = "Id";
+        }
+
+        private void registrar_Cita(Citizen nombre) 
+        {
+            var DB = new Proyecto_VacunacionContext();
+            var lista = DB.Appointments.Where(a => a.IdCabin.Equals(this.cabina.Id));
+            var Cita = new Appointment()
+            {
+                DuiCitizen = nombre.Dui 
+            };
+              foreach (Appointment l in lista)
+            {
+               
+            }
+        }
+
+        private void btn2_Click(object sender, EventArgs e)
+        {
+            
+            DateTime one = dtpCita.Value;
+            if (one <= DateTime.Now)
+            {
+                MessageBox.Show("No es posible agendar su cita en esa fecha", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+
+                var DB = new Proyecto_VacunacionContext();
+                var lista = DB.Appointments.Where(a => a.IdCabin.Equals(this.cabina.Id) && a.DateHourSchedule >= DateTime.Now)
+                    .OrderBy(a => a.DateHourSchedule);
+                bool validate = true; 
+                foreach (Appointment l in lista)
+                {
+                    if  (DateTime.Compare(one, l.DateHourSchedule.GetValueOrDefault())== 0)
+                    {
+                        validate = false;
+                        MessageBox.Show("No es posible agendar su cita en esa fecha", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    }
+
+                }
+                if(validate)
+                {
+                    var nombre = this.ciudadano.Dui;
+                    Appointment ap = new Appointment()
+                    {
+                        DateHourSchedule = one, IdCabin = this.cabina.Id, DuiCitizen = nombre 
+                    };
+                    
+                    DB.Add(ap);
+                    DB.SaveChanges();
+
+                }
+
+            
+            
+            }
+            
+        }
+
+         private void dtpCita_ValueChanged(object sender, EventArgs e)
+        {
+             DateTime mediaHora = dtpCita.Value;
+            if (mediaHora.Minute > 0 && mediaHora.Minute < 30)
+            {
+                mediaHora = mediaHora.Date + new TimeSpan(mediaHora.Hour, 0, 0);
+             }
+             else
+            {
+                if (mediaHora.Minute > 30 && mediaHora.Minute < 60)
+                {
+                    mediaHora = mediaHora.Date + new TimeSpan(mediaHora.Hour + 1, 0, 0);
+                }
+                
+            }
+            dtpCita.Value = mediaHora;
+            
+         
         }
     }
 }

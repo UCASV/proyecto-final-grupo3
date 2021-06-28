@@ -1,3 +1,4 @@
+using ProyectoVacunacionCovid.VaccinationContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,9 @@ namespace ProyectoVacunacionCovid
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Proyecto.RegistroCita());
+            var DB = new Proyecto_VacunacionContext();
+            var Cabina = DB.Cabins.SingleOrDefault(c => c.Id.Equals(1));
+            Application.Run(new Proyecto.RegistroCita(Cabina));
         }
     }
 }
