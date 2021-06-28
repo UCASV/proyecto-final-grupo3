@@ -117,6 +117,24 @@ namespace ProyectoVacunacionCovid
 
         private void btnProcesoVacunacion2_Click(object sender, EventArgs e)
         {
+            var db = new Proyecto_VacunacionContext();
+            List<Citizen> residents = db.Citizens.ToList();
+            List<Appointment> appointmentsList = db.Appointments.ToList();
+
+            int dui = int.Parse(txtBuscarSeguimiento.Text);
+            bool found = residents
+                .Where(r => r.Dui == dui)
+                .ToList().Count() > 0;
+
+            bool eligible = appointmentsList
+                   .Where(appt => appt.DateHourProcessed != null)
+                   .ToList().Count() > 1;
+
+            if (eligible)
+            {
+                MessageBox.Show("El ciudadano ha completado su proceso de vacunación", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
             VaccinationProcess.Show();
         }
 
