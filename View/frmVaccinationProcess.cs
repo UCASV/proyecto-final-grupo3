@@ -55,7 +55,6 @@ namespace ProyectoVacunacionCovid.View
         private void LoadData()
         {
             var SecundaryEffectsList = new List<SecundaryEffect>();
-            Models.CitizenWaitingQueue.InstanceQueue();
             
             //dgv Datasource           
             using (var db = new Proyecto_VacunacionContext())
@@ -73,7 +72,6 @@ namespace ProyectoVacunacionCovid.View
             }
             //Following methon causes exception on indexrow
             //UpdateDgvWaitingQueue();
-            UpdateDgvCitizen();
             //Loading SecundaryEffects on cmb
             //loading data on comboBox
             cmbSecundaryEffects.DataSource = SecundaryEffectsList;
@@ -138,6 +136,7 @@ namespace ProyectoVacunacionCovid.View
 
                             //Actualizando dgv y lista de pacientes en espera
                             dgvWaitingQueue.DataSource = null;
+                            Models.CitizenWaitingQueue.RemoveCitizenOnQueue(selectedItem.Dui);
                             dgvWaitingQueue.Refresh();
                             dgvWaitingQueue.Update();
                             CitizenOnObservation.Add(selectedItem);
@@ -217,7 +216,10 @@ namespace ProyectoVacunacionCovid.View
             }
             if(e.ColumnIndex == 3)
             {
-                ProcessCitizen();
+                var selectedItem = dgvWaitingQueue.SelectedRows[0].DataBoundItem as CitizenVm;
+                int minutes = CitizenTimerCounter.Find(c => c.Dui == selectedItem.Dui).TimeMinutes;
+                if(MessageBox.Show($"Confimacion de alta medica. \nNombre:{selectedItem.Name}\nMinutos de espera:{minutes}.\nRecuerda que lo recomendado es esperar 30 minutos.","",MessageBoxButtons.YesNo,MessageBoxIcon.Information)== DialogResult.Yes)
+                    ProcessCitizen();
             }
         }
         private void ProcessSecundaryEffect()
@@ -275,19 +277,58 @@ namespace ProyectoVacunacionCovid.View
                 {
                     MessageBox.Show("Error al establecer conexion con base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+                //Validacion si ciudadano aplica a segunda dosis
+                int appointmetCounter = 0;
+
+                appointmentnDb.ForEach(c =>
+                {
+                    if (c.DuiCitizen == citizenSelected.Dui) appointmetCounter++;
+                });
+                bool SecondVacAvailable = appointmetCounter == 1;
+
+                if (SecondVacAvailable) ScheduleSecondVaccination(citizenSelected.Dui);
+                else MessageBox.Show("Paciente dado de alta exitosamente", "Alta medica", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             dgvWaitingQueue.DataSource = null;
             CitizenOnObservation.Remove(citizenSelected);
             UpdateDgvWaitingQueue();
         }
 
+        private void ScheduleSecondVaccination(int CitizenId)
+        {
+            var db = new Proyecto_VacunacionContext();
+            var newAppointment = new Appointment
+            {
+                DuiCitizen = CitizenId,
+                DateHourSchedule = DateTime.Now.AddDays(30),
+                IdCabin = 1
+            };
+            try
+            {
+                db.Add(newAppointment);
+                db.SaveChanges();
+                MessageBox.Show($"Programacion de segunda dosis\nDetalles de la cita:\nFecha: " + DateTime.Now.AddDays(30).ToString("dd/mm/yy") + "\nHora:" + DateTime.Now.ToString("hh:mm tt"), "Programcion Segunda Dosis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error en conexion a base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                throw;
+            }
+        }
+
         private void frmVaccinationProcess_Activated(object sender, EventArgs e)
         {
-            //Actualizar lista de espera antes de vacunacion
-            CitizenQueue = Models.CitizenWaitingQueue.CitizensList;
-            foreach (var c in CitizenQueue)
+            foreach (var c in Models.CitizenWaitingQueue.CitizensList)
             {
-                if(!CitizenQueue.Contains(c)) CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));                
+                if (!CitizenQueueVm.Exists(e => e.Dui == c.Dui))
+                {
+                    dgvWaitingCitizen.DataSource = null;
+                    CitizenQueueVm.Add(MapperC.MapCitizenToCitizenVm(c));
+                    UpdateDgvCitizen();
+                }
             }
         }
     }
