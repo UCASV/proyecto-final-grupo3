@@ -77,6 +77,11 @@ namespace ProyectoVacunacionCovid
 
 
                     dgvAppts.DataSource = appointmentsListVm.Where(ap => ap.DuiCitizen == dui).ToList();
+                    dgvAppts.Columns[0].HeaderText = "DUI";
+                    dgvAppts.Columns[0].HeaderText = "Fecha programada";
+                    dgvAppts.Columns[0].HeaderText = "Fecha/hora vacunacion";
+                    dgvAppts.Columns[0].HeaderText = "Fecha/hora Proceso completado";
+
                     // no funciona ---> dgvAppts.Columns["date_hour_schedule"].DataPropertyName = "DateHourSchedule";
 
                 }
