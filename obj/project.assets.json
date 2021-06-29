@@ -5761,19 +5761,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\salva\\.nuget\\packages\\": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\salva\\Desktop\\Progra\\ProyectoPOO\\POO\\PROYECTO RESTORE\\PROYECTO_POO\\ProyectoVacunacionCovid.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Documents\\POO\\ProyectoCopia\\proyecto-final-grupo3\\ProyectoVacunacionCovid.csproj",
       "projectName": "ProyectoVacunacionCovid",
-      "projectPath": "C:\\Users\\salva\\Desktop\\Progra\\ProyectoPOO\\POO\\PROYECTO RESTORE\\PROYECTO_POO\\ProyectoVacunacionCovid.csproj",
-      "packagesPath": "C:\\Users\\salva\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\salva\\Desktop\\Progra\\ProyectoPOO\\POO\\PROYECTO RESTORE\\PROYECTO_POO\\obj\\",
+      "projectPath": "C:\\Users\\user\\Documents\\POO\\ProyectoCopia\\proyecto-final-grupo3\\ProyectoVacunacionCovid.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\Documents\\POO\\ProyectoCopia\\proyecto-final-grupo3\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\salva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

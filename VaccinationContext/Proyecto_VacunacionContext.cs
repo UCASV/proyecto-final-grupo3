@@ -34,9 +34,9 @@ namespace ProyectoVacunacionCovid.VaccinationContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
+            if (!optionsBuilder.IsConfigured)  
             {
-                optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=Proyecto_Vacunacion;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=localhost\\MSSQLSERVER01;Database=Proyecto_Vacunacion;Trusted_Connection=True;");
             }
         }
 

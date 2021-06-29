@@ -22,30 +22,25 @@ namespace Proyecto
         {
             InitializeComponent();
             this.cabina = cabina;
-
-
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        public void SetDui(string dui)
         {
-
+            this.txtDUI.Text = dui;
         }
+        
         private bool validaciones(int Dui, string tel)
         {
             var DB = new Proyecto_VacunacionContext();
-            var SC = DB.Citizens.ToList();
-        
-            foreach (Citizen l in SC)
+            var SC = DB.Citizens.Where(a => a.Dui.Equals(Dui) || a.PhoneNumber.Equals(tel)).ToList();
 
+            if (SC.Count() > 0)
             {
-                if (l.PhoneNumber == tel || l.Dui == Dui )
-                {
-                    MessageBox.Show("El DUI o el telefono ya existe favor revisar campos", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return false;
-                }
-
+                MessageBox.Show("El DUI o el telefono ya existe. Favor revisar campos", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
             }
-            return true;
+            else
+                return true;
         }
         private void btnContinuar_Click(object sender, EventArgs e)
         {
@@ -80,8 +75,6 @@ namespace Proyecto
                                     Email = txtCorreo.Text,
                                     DateOfBirth = dtpNacimiento.Value,
                                     IdAddress = ADB.Id
-
-
                                 };
 
                                 var Iref = cmbInstitution.SelectedItem as Institution;
@@ -105,7 +98,8 @@ namespace Proyecto
                                 DB.Add(Nombre);
                             try 
                             { 
-                                DB.SaveChanges(); 
+                                DB.SaveChanges();
+                                tabControl.SelectedIndex = 1;
                             }
                             catch (SqlException exception) 
                             {
@@ -116,12 +110,8 @@ namespace Proyecto
                                 }
                                 else
                                     throw;
-                               
                             }
-                                tabControl.SelectedIndex = 1;
-                            
                         }
-                        
                     }
                     else
                         MessageBox.Show("Ingrese un correo valido.", "Proyecto Vacuanación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -169,19 +159,6 @@ namespace Proyecto
             cmbMunicipio.ValueMember = "Id";
         }
 
-        private void registrar_Cita(Citizen nombre) 
-        {
-            var DB = new Proyecto_VacunacionContext();
-            var lista = DB.Appointments.Where(a => a.IdCabin.Equals(this.cabina.Id));
-            var Cita = new Appointment()
-            {
-                DuiCitizen = nombre.Dui 
-            };
-              foreach (Appointment l in lista)
-            {
-               
-            }
-        }
 
         private void btn2_Click(object sender, EventArgs e)
         {
@@ -196,7 +173,7 @@ namespace Proyecto
 
                 if (one.Hour < 8 || one.Hour >= 17)
                 {
-                    MessageBox.Show("La cita debe ser entre las 8 am y las 16:59 pm", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("La cita debe ser entre las 8:00 am y las 16:59 pm", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -228,9 +205,6 @@ namespace Proyecto
                         DB.Add(ap);
                         DB.SaveChanges();
                         mostrarCita(ap);
-
-
-
                     }
                 }            
             
