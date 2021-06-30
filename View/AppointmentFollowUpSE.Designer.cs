@@ -554,6 +554,8 @@ namespace ProyectoVacunacionCovid
             // 
             this.dgvAppts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAppts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvAppts.ReadOnly = true;
+            this.dgvAppts.BackgroundColor = System.Drawing.Color.White;
             this.dgvAppts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAppts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAppts.Location = new System.Drawing.Point(28, 441);
@@ -677,13 +679,14 @@ namespace ProyectoVacunacionCovid
             // 
             // AppointmentFollowUpSE
             // 
+            this.AutoScroll = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
             this.ClientSize = new System.Drawing.Size(815, 845);
             this.ControlBox = false;
             this.Controls.Add(this.tabSeguimientoCitas);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AppointmentFollowUpSE";

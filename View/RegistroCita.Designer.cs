@@ -403,13 +403,6 @@ namespace Proyecto
             this.clbEnfermedades.Size = new System.Drawing.Size(278, 107);
             this.clbEnfermedades.TabIndex = 11;
             // 
-            // txtDUI
-            // 
-            this.txtDUI.Location = new System.Drawing.Point(264, 3);
-            this.txtDUI.Name = "txtDUI";
-            this.txtDUI.Size = new System.Drawing.Size(208, 23);
-            this.txtDUI.TabIndex = 4;
-            // 
             // btnContinuar
             // 
             this.btnContinuar.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -420,6 +413,9 @@ namespace Proyecto
             this.btnContinuar.Text = "Continuar";
             this.btnContinuar.UseVisualStyleBackColor = true;
             this.btnContinuar.Click += new System.EventHandler(this.btnContinuar_Click);
+            this.btnContinuar.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnContinuar.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnContinuar.ForeColor = System.Drawing.Color.White;
             // 
             // tableLayoutPanel3
             // 
@@ -491,6 +487,7 @@ namespace Proyecto
             // dtpCita
             // 
             this.dtpCita.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpCita.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dtpCita.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpCita.Location = new System.Drawing.Point(3, 331);
             this.dtpCita.Name = "dtpCita";
@@ -502,7 +499,7 @@ namespace Proyecto
             // 
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dtpCita.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(3, 179);
             this.label10.Name = "label10";
@@ -531,6 +528,9 @@ namespace Proyecto
             this.btn2.TabIndex = 4;
             this.btn2.Text = "Continuar";
             this.btn2.UseVisualStyleBackColor = true;
+            this.btn2.BackColor = System.Drawing.Color.SlateBlue;
+            this.btn2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn2.ForeColor = System.Drawing.Color.White;
             this.btn2.Click += new System.EventHandler(this.btn2_Click);
             // 
             // tb1
@@ -685,6 +685,9 @@ namespace Proyecto
             this.btnFinalizar.Text = "Finalizar";
             this.btnFinalizar.UseVisualStyleBackColor = true;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
+            this.btnFinalizar.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnFinalizar.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnFinalizar.ForeColor = System.Drawing.Color.White;
             // 
             // label12
             // 
@@ -713,7 +716,8 @@ namespace Proyecto
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // RegistroCita
-            // 
+            //
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
@@ -722,6 +726,7 @@ namespace Proyecto
             this.Name = "RegistroCita";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.RegistroCita_Load);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -741,7 +746,6 @@ namespace Proyecto
             this.tableLayoutPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion

@@ -112,20 +112,19 @@ namespace ProyectoVacunacionCovid
             this.txtPassword.TabIndex = 2;
             // 
             // btnInit
-            // 
-            this.btnInit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
+            //
+            this.btnInit.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnInit.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInit.ForeColor = System.Drawing.Color.White; 
             this.tableLayoutPanel2.SetColumnSpan(this.btnInit, 2);
             this.btnInit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnInit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInit.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnInit.ForeColor = System.Drawing.Color.White;
             this.btnInit.Location = new System.Drawing.Point(97, 276);
             this.btnInit.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.btnInit.Name = "btnInit";
             this.btnInit.Size = new System.Drawing.Size(434, 56);
             this.btnInit.TabIndex = 3;
             this.btnInit.Text = "Iniciar sesión";
-            this.btnInit.UseVisualStyleBackColor = false;
             this.btnInit.Click += new System.EventHandler(this.btnInit_Click);
             // 
             // tableLayoutPanel2
@@ -156,7 +155,9 @@ namespace ProyectoVacunacionCovid
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // frmLogin
-            // 
+            //
+            this.AutoScroll = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));

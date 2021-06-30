@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0tkml5C0dbmHndpwpKgviachCg6aI0S8Wsv0p9w4mtMecpuPmpOKylv2doAaNH9VxHOF/R7CU9yq3TT1MPBUaA==",
+  "dgSpecHash": "5N/sh/5YlazLGJ9fvhkL8OmfMucdNQ20MaxIikogcUiyDVT9zdXstfkYpcjw9nl5BHfgqD1EZcdfKi0pin8C3Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Documents\\POO\\ProyectoCopia\\proyecto-final-grupo3\\ProyectoVacunacionCovid.csproj",
+  "projectFilePath": "C:\\Users\\user\\Documents\\POO\\PROYECTO_POO\\ProyectoVacunacionCovid.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

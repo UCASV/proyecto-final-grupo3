@@ -43,17 +43,12 @@ namespace ProyectoVacunacionCovid
                     .Where(r => r.Dui == dui)
                     .ToList().Count() > 0;
 
-               
-
                 bool eligible = appointmentsList
                     .Where(appt => appt.DuiCitizen == dui)
                     .ToList().Count() <= 2;
 
-
-
                 if (found)
                 {
-
                     MessageBox.Show("¡El ciudadano es elegible, bienvenido!", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     var ciudadano = db.Citizens.FirstOrDefault(c => c.Dui == dui);
                     var ins = db.Institutions.FirstOrDefault(i => i.Id == ciudadano.IdInstitution); //accediendo a la institucion que esta linkeada al dui consultado
@@ -78,9 +73,9 @@ namespace ProyectoVacunacionCovid
 
                     dgvAppts.DataSource = appointmentsListVm.Where(ap => ap.DuiCitizen == dui).ToList();
                     dgvAppts.Columns[0].HeaderText = "DUI";
-                    dgvAppts.Columns[0].HeaderText = "Fecha programada";
-                    dgvAppts.Columns[0].HeaderText = "Fecha/hora vacunacion";
-                    dgvAppts.Columns[0].HeaderText = "Fecha/hora Proceso completado";
+                    dgvAppts.Columns[1].HeaderText = "Fecha programada";
+                    dgvAppts.Columns[2].HeaderText = "Fecha/hora vacunacion";
+                    dgvAppts.Columns[3].HeaderText = "Fecha/hora Proceso completado";
 
                     // no funciona ---> dgvAppts.Columns["date_hour_schedule"].DataPropertyName = "DateHourSchedule";
 
@@ -114,9 +109,6 @@ namespace ProyectoVacunacionCovid
             ControlBox = true;
 
             CitizenWaitingQueue.InstanceQueue();
-
-           
-
         }
 
 

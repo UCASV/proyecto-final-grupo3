@@ -29,7 +29,7 @@ namespace Proyecto
             this.txtDUI.Text = dui;
         }
         
-        private bool validaciones(int Dui, string tel)
+        private bool validarDuplicados(int Dui, string tel)
         {
             var DB = new Proyecto_VacunacionContext();
             var SC = DB.Citizens.Where(a => a.Dui.Equals(Dui) || a.PhoneNumber.Equals(tel)).ToList();
@@ -53,63 +53,59 @@ namespace Proyecto
                     var correoFormat = new Regex(@"^[^\s@]+@[^\s@]+\.[^\s@]+$");
                     if (correoFormat.IsMatch(txtCorreo.Text))
                     {
-                        var DB = new Proyecto_VacunacionContext();
-                        if(validaciones(Int32.Parse(txtDUI.Text), txtTelefono.Text))
+                        if (mayorEdad(dtpNacimiento.Value))
                         {
-                            
-                                var Cref = cmbMunicipio.SelectedItem as City;
-                                var Aref = new Address()
+                            var DB = new Proyecto_VacunacionContext();
+                            if (validarDuplicados(Int32.Parse(txtDUI.Text), txtTelefono.Text))
+                            {
+                                try
                                 {
-                                    Location = txtLocalidad.Text,
-                                    IdCity = Cref.Id
-                                };
-
-                                DB.Add(Aref);
-                                DB.SaveChanges();
-                                var ADB = DB.Addresses.ToList().Last();
-                                Citizen Nombre = new Citizen()
-                                {
-                                    Name = txtNombre.Text,
-                                    Dui = Int32.Parse(txtDUI.Text),
-                                    PhoneNumber = txtTelefono.Text,
-                                    Email = txtCorreo.Text,
-                                    DateOfBirth = dtpNacimiento.Value,
-                                    IdAddress = ADB.Id
-                                };
-
-                                var Iref = cmbInstitution.SelectedItem as Institution;
-                                Nombre.IdInstitution = Iref.Id;
-
-                                var Eref = clbEnfermedades.CheckedItems;
-                                UserDisease usd;
-
-                                foreach (ChronicleDisease cd in Eref)
-                                {
-                                    usd = new UserDisease()
+                                    var Cref = cmbMunicipio.SelectedItem as City;
+                                    var Aref = new Address()
                                     {
-                                        DuiCitizen = Nombre.Dui,
-                                        IdChronicleDisease = cd.Id
+                                        Location = txtLocalidad.Text,
+                                        IdCity = Cref.Id
                                     };
 
-                                    DB.Add(usd);
+                                    DB.Add(Aref);
+                                    DB.SaveChanges();
+                                    var ADB = DB.Addresses.ToList().Last();
+                                    Citizen Nombre = new Citizen()
+                                    {
+                                        Name = txtNombre.Text,
+                                        Dui = Int32.Parse(txtDUI.Text),
+                                        PhoneNumber = txtTelefono.Text,
+                                        Email = txtCorreo.Text,
+                                        DateOfBirth = dtpNacimiento.Value,
+                                        IdAddress = ADB.Id
+                                    };
 
-                                };
-                                this.ciudadano = Nombre;
-                                DB.Add(Nombre);
-                            try 
-                            { 
-                                DB.SaveChanges();
-                                tabControl.SelectedIndex = 1;
-                            }
-                            catch (SqlException exception) 
-                            {
-                                if (exception.Number == 2601)
-                                {
-                                    MessageBox.Show("El DUI o el telefono ya existe favor revisar campos", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    return;
+                                    var Iref = cmbInstitution.SelectedItem as Institution;
+                                    Nombre.IdInstitution = Iref.Id;
+
+                                    var Eref = clbEnfermedades.CheckedItems;
+                                    UserDisease usd;
+
+                                    foreach (ChronicleDisease cd in Eref)
+                                    {
+                                        usd = new UserDisease()
+                                        {
+                                            DuiCitizen = Nombre.Dui,
+                                            IdChronicleDisease = cd.Id
+                                        };
+
+                                        DB.Add(usd);
+
+                                    };
+                                    this.ciudadano = Nombre;
+                                    DB.Add(Nombre);
+                                    DB.SaveChanges();
+                                    tabControl.SelectedIndex = 1;
                                 }
-                                else
-                                    throw;
+                                catch (Exception)
+                                {
+                                    MessageBox.Show("Error al establecer conexion con base de datos", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                }
                             }
                         }
                     }
@@ -243,7 +239,16 @@ namespace Proyecto
             lblNnombre.Text = this.ciudadano.Name;
             lblNlugar.Text = $"Cabina {cita.Id}, en {AD.Location}, {CT.City1}, {ST.State1}";
             lblNfecha.Text = cita.DateHourSchedule.ToString();
+        }
 
+        private bool mayorEdad (DateTime birthday)
+        {
+            bool ans = DateTime.Now >= birthday.AddYears(18);
+
+            if (!ans)
+                MessageBox.Show("Debe ser mayor de edad", "Proyecto Vacunación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            return ans;
         }
 
         private void btnFinalizar_Click(object sender, EventArgs e)

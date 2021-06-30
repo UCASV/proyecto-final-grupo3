@@ -5767,11 +5767,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Documents\\POO\\ProyectoCopia\\proyecto-final-grupo3\\ProyectoVacunacionCovid.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Documents\\POO\\PROYECTO_POO\\ProyectoVacunacionCovid.csproj",
       "projectName": "ProyectoVacunacionCovid",
-      "projectPath": "C:\\Users\\user\\Documents\\POO\\ProyectoCopia\\proyecto-final-grupo3\\ProyectoVacunacionCovid.csproj",
+      "projectPath": "C:\\Users\\user\\Documents\\POO\\PROYECTO_POO\\ProyectoVacunacionCovid.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Documents\\POO\\ProyectoCopia\\proyecto-final-grupo3\\obj\\",
+      "outputPath": "C:\\Users\\user\\Documents\\POO\\PROYECTO_POO\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
