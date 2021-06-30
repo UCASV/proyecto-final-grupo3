@@ -89,7 +89,8 @@ namespace ProyectoVacunacionCovid
                 {
                     if (MessageBox.Show("¡Ciudadano no registrado! ¿Desea registrar?", "Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
-                        var apptRegistry = new Proyecto.RegistroCita();
+                        var apptRegistry = new Proyecto.RegistroCita(new Cabin() {Id=1});
+                        apptRegistry.SetDui(txtBuscarSeguimiento.Text);
                         apptRegistry.Show();
                     }
                 }

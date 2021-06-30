@@ -310,7 +310,7 @@ namespace ProyectoVacunacionCovid.View
             {
                 db.Add(newAppointment);
                 db.SaveChanges();
-                MessageBox.Show($"Programacion de segunda dosis\nDetalles de la cita:\nFecha: " + nextAppoDate.ToString("mm/dd/yy") + "\nHora:" + nextAppoDate.ToString("hh:mm tt"), "Programcion Segunda Dosis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Programacion de segunda dosis\nDetalles de la cita:\nFecha: {nextAppoDate}"     , "Programcion Segunda Dosis", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception)
