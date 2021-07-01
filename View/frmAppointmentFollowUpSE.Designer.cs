@@ -32,7 +32,6 @@ namespace ProyectoVacunacionCovid
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAppointmentFollowUpSE));
             this.tabSeguimientoCitas = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnProcesoVacunacion = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBuscarSeguimiento = new System.Windows.Forms.TextBox();
@@ -68,6 +67,7 @@ namespace ProyectoVacunacionCovid
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnProcesoVacunacion = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tabSeguimientoCitas.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -92,42 +92,28 @@ namespace ProyectoVacunacionCovid
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabSeguimientoCitas.Controls.Add(this.tabPage1);
             this.tabSeguimientoCitas.Controls.Add(this.g4wrtw45yh);
-            this.tabSeguimientoCitas.Location = new System.Drawing.Point(9, 24);
+            this.tabSeguimientoCitas.Location = new System.Drawing.Point(9, 48);
             this.tabSeguimientoCitas.Margin = new System.Windows.Forms.Padding(0);
             this.tabSeguimientoCitas.Name = "tabSeguimientoCitas";
             this.tabSeguimientoCitas.Padding = new System.Drawing.Point(0, 0);
             this.tabSeguimientoCitas.SelectedIndex = 0;
-            this.tabSeguimientoCitas.Size = new System.Drawing.Size(798, 812);
+            this.tabSeguimientoCitas.Size = new System.Drawing.Size(798, 797);
+            this.tabSeguimientoCitas.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabSeguimientoCitas.TabIndex = 0;
+            this.tabSeguimientoCitas.TabStop = false;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tabPage1.Controls.Add(this.btnProcesoVacunacion);
             this.tabPage1.Controls.Add(this.tableLayoutPanel2);
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(790, 784);
+            this.tabPage1.Size = new System.Drawing.Size(790, 769);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
-            // 
-            // btnProcesoVacunacion
-            // 
-            this.btnProcesoVacunacion.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnProcesoVacunacion.BackColor = System.Drawing.Color.SlateBlue;
-            this.btnProcesoVacunacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProcesoVacunacion.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnProcesoVacunacion.ForeColor = System.Drawing.Color.White;
-            this.btnProcesoVacunacion.Location = new System.Drawing.Point(74, 719);
-            this.btnProcesoVacunacion.Name = "btnProcesoVacunacion";
-            this.btnProcesoVacunacion.Size = new System.Drawing.Size(597, 47);
-            this.btnProcesoVacunacion.TabIndex = 4;
-            this.btnProcesoVacunacion.Text = "Proceso de Vacunación";
-            this.btnProcesoVacunacion.UseVisualStyleBackColor = false;
-            this.btnProcesoVacunacion.Click += new System.EventHandler(this.btnProcesoVacunacion_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -141,7 +127,7 @@ namespace ProyectoVacunacionCovid
             this.tableLayoutPanel2.Controls.Add(this.label1, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.btnBuscarSeguimiento, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.label4, 1, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(74, 344);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(98, 341);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.10608F));
@@ -222,7 +208,7 @@ namespace ProyectoVacunacionCovid
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 65);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 65);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -252,7 +238,7 @@ namespace ProyectoVacunacionCovid
             this.g4wrtw45yh.Location = new System.Drawing.Point(4, 24);
             this.g4wrtw45yh.Name = "g4wrtw45yh";
             this.g4wrtw45yh.Padding = new System.Windows.Forms.Padding(3);
-            this.g4wrtw45yh.Size = new System.Drawing.Size(790, 784);
+            this.g4wrtw45yh.Size = new System.Drawing.Size(790, 769);
             this.g4wrtw45yh.TabIndex = 2;
             this.g4wrtw45yh.Text = "tabPage3";
             // 
@@ -555,7 +541,6 @@ namespace ProyectoVacunacionCovid
             // 
             this.dgvAppts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAppts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvAppts.ReadOnly = true;
             this.dgvAppts.BackgroundColor = System.Drawing.Color.White;
             this.dgvAppts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAppts.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -666,6 +651,21 @@ namespace ProyectoVacunacionCovid
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
+            // btnProcesoVacunacion
+            // 
+            this.btnProcesoVacunacion.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnProcesoVacunacion.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnProcesoVacunacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProcesoVacunacion.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnProcesoVacunacion.ForeColor = System.Drawing.Color.White;
+            this.btnProcesoVacunacion.Location = new System.Drawing.Point(550, 12);
+            this.btnProcesoVacunacion.Name = "btnProcesoVacunacion";
+            this.btnProcesoVacunacion.Size = new System.Drawing.Size(257, 33);
+            this.btnProcesoVacunacion.TabIndex = 4;
+            this.btnProcesoVacunacion.Text = "Proceso de Vacunación";
+            this.btnProcesoVacunacion.UseVisualStyleBackColor = false;
+            this.btnProcesoVacunacion.Click += new System.EventHandler(this.btnProcesoVacunacion_Click);
+            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -681,14 +681,15 @@ namespace ProyectoVacunacionCovid
             // 
             // frmAppointmentFollowUpSE
             // 
-            this.AutoScroll = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(54)))), ((int)(((byte)(164)))));
-            this.ClientSize = new System.Drawing.Size(816, 845);
+            this.ClientSize = new System.Drawing.Size(816, 846);
             this.ControlBox = false;
+            this.Controls.Add(this.btnProcesoVacunacion);
             this.Controls.Add(this.tabSeguimientoCitas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
