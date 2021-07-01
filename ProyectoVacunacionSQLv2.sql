@@ -116,7 +116,7 @@ ALTER TABLE MANAGERxCABIN ADD FOREIGN KEY (id_cabin ) REFERENCES CABIN (id);
 ALTER TABLE APPOINTMENT_EFFECT ADD FOREIGN KEY (id_secundary_effect) REFERENCES SECUNDARY_EFFECT (id);
 ALTER TABLE APPOINTMENT_EFFECT ADD FOREIGN KEY (id_appointment) REFERENCES APPOINTMENT (id);
 
---DATASEED
+--Dataseed
 --Insertando instituciones
 INSERT INTO INSTITUTION (institution) VALUES ('Ciudadano')
 INSERT INTO INSTITUTION (institution) VALUES ('Educación')
@@ -130,27 +130,23 @@ INSERT INTO INSTITUTION (institution) VALUES ('Periodismo')
 INSERT INTO INSTITUTION (institution) VALUES ('Gobierno')
 
 --Insertando enfermedades cronicas
-INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES('Covid19')
-INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES('Diabetes')
-INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES('Sifilis')
-INSERT INTO CHRONICLE_DISEASE(chronicle_disease)  VALUES('VIH')
-INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES('Epatitis')
-INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES('Insuficiencia Renal')
-INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES('Alzheimer')
-INSERT INTO CHRONICLE_DISEASE(chronicle_disease)  VALUES('Gripe')
-INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES('Cancer')
-INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES('Hpertensión')
-INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES('Epilepsia')
+INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES ('Insuficiencia Renal')
+INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES ('Diabetes')
+INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES ('Cancer')
+INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES ('Hepatitis')
+INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES ('VIH/SIDA')
+INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES ('EPOC')
+INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES ('Insuficiencia Cardiaca')
 
 --Insertano efectos secundarios
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Fatiga')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Dolor y/o sensibilidad en la inyeccion')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Dolor de cabeza')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Enrojecimiento en la inyeccion')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Fiebre')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Anafilaxia')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Artralgia')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Mialga')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('fatiga')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('dolor y/o sensibilidad en la inyeccion')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('dolor de cabeza')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('enrojecimiento en la inyeccion')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('fiebre')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('anafilaxia')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('artralgia')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('mialga')
 
 --Insertando Departamentos
 INSERT INTO [STATE] ([state]) VALUES ('La Libertad')--1
