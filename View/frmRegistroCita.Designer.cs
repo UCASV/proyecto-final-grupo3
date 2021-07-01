@@ -179,7 +179,7 @@ namespace Proyecto
             this.txtDUI.Location = new System.Drawing.Point(280, 3);
             this.txtDUI.Name = "txtDUI";
             this.txtDUI.Size = new System.Drawing.Size(272, 23);
-            this.txtDUI.TabIndex = 4;
+            this.txtDUI.TabIndex = 1;
             // 
             // label3
             // 
@@ -414,6 +414,9 @@ namespace Proyecto
             this.btnContinuar.Text = "Continuar";
             this.btnContinuar.UseVisualStyleBackColor = true;
             this.btnContinuar.Click += new System.EventHandler(this.btnContinuar_Click);
+            this.btnContinuar.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnContinuar.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnContinuar.ForeColor = System.Drawing.Color.White;
             // 
             // tableLayoutPanel3
             // 
@@ -486,6 +489,7 @@ namespace Proyecto
             // 
             this.dtpCita.CalendarFont = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dtpCita.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpCita.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dtpCita.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpCita.Location = new System.Drawing.Point(3, 331);
             this.dtpCita.Name = "dtpCita";
@@ -526,6 +530,9 @@ namespace Proyecto
             this.btn2.TabIndex = 4;
             this.btn2.Text = "Continuar";
             this.btn2.UseVisualStyleBackColor = true;
+            this.btn2.BackColor = System.Drawing.Color.SlateBlue;
+            this.btn2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn2.ForeColor = System.Drawing.Color.White;
             this.btn2.Click += new System.EventHandler(this.btn2_Click);
             // 
             // tb1
@@ -680,6 +687,9 @@ namespace Proyecto
             this.btnFinalizar.Text = "Finalizar";
             this.btnFinalizar.UseVisualStyleBackColor = true;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
+            this.btnFinalizar.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnFinalizar.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnFinalizar.ForeColor = System.Drawing.Color.White;
             // 
             // label12
             // 
@@ -720,6 +730,7 @@ namespace Proyecto
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro";
             this.Load += new System.EventHandler(this.RegistroCita_Load);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -739,7 +750,6 @@ namespace Proyecto
             this.tableLayoutPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion
