@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace Proyecto
 {
-    public partial class RegistroCita : Form
+    public partial class frmRegistroCita : Form
     {
 
         public Cabin cabina;
         public Citizen ciudadano;
-        public RegistroCita(Cabin cabina)
+        public frmRegistroCita(Cabin cabina)
         {
             InitializeComponent();
             this.cabina = cabina;

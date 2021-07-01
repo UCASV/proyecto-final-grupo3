@@ -28,7 +28,7 @@ namespace ProyectoVacunacionCovid
                 login.ShowDialog();
                 //Validando si hubo login exitoso
                 if (login.SuccesLogin)
-                    Application.Run(new AppointmentFollowUpSE());
+                    Application.Run(new frmAppointmentFollowUpSE());
                     //En lugar de frmMain, pongan el formulario que hayan hecho
             }
         }

@@ -5761,23 +5761,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\steve\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Documents\\POO\\ProyectoCopia\\proyecto-final-grupo3\\ProyectoVacunacionCovid.csproj",
+      "projectUniqueName": "C:\\Users\\steve\\Documents\\Informatica\\POO\\workspace\\PROYECTO_POO\\ProyectoVacunacionCovid.csproj",
       "projectName": "ProyectoVacunacionCovid",
-      "projectPath": "C:\\Users\\user\\Documents\\POO\\ProyectoCopia\\proyecto-final-grupo3\\ProyectoVacunacionCovid.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Documents\\POO\\ProyectoCopia\\proyecto-final-grupo3\\obj\\",
+      "projectPath": "C:\\Users\\steve\\Documents\\Informatica\\POO\\workspace\\PROYECTO_POO\\ProyectoVacunacionCovid.csproj",
+      "packagesPath": "C:\\Users\\steve\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\steve\\Documents\\Informatica\\POO\\workspace\\PROYECTO_POO\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\steve\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5836,7 +5837,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

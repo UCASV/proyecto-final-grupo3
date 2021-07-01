@@ -15,13 +15,13 @@ using ProyectoVacunacionCovid.ViewModels;
 
 namespace ProyectoVacunacionCovid
 {
-    public partial class AppointmentFollowUpSE : Form
+    public partial class frmAppointmentFollowUpSE : Form
     {
      
         public frmVaccinationProcess VaccinationProcess { get; set; }
         static public List<Citizen> CitizensQueueList;
 
-        public AppointmentFollowUpSE()
+        public frmAppointmentFollowUpSE()
         {
             InitializeComponent();
             VaccinationProcess = new frmVaccinationProcess();
@@ -89,7 +89,7 @@ namespace ProyectoVacunacionCovid
                 {
                     if (MessageBox.Show("¡Ciudadano no registrado! ¿Desea registrar?", "Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
-                        var apptRegistry = new Proyecto.RegistroCita(new Cabin() {Id=1});
+                        var apptRegistry = new Proyecto.frmRegistroCita(new Cabin() {Id=1});
                         apptRegistry.SetDui(txtBuscarSeguimiento.Text);
                         apptRegistry.Show();
                     }
