@@ -107,6 +107,7 @@ ALTER TABLE MANAGERxCABIN ADD FOREIGN KEY (id_cabin ) REFERENCES CABIN (id);
 ALTER TABLE APPOINTMENT_EFFECT ADD FOREIGN KEY (id_secundary_effect) REFERENCES SECUNDARY_EFFECT (id);
 ALTER TABLE APPOINTMENT_EFFECT ADD FOREIGN KEY (id_appointment) REFERENCES APPOINTMENT (id);
 
+--DATASEED
 INSERT INTO INSTITUTION (institution) VALUES ('Ciudadano')
 INSERT INTO INSTITUTION (institution) VALUES ('Educación')
 INSERT INTO INSTITUTION (institution) VALUES ('Salud')
@@ -133,7 +134,7 @@ INSERT INTO CITY (city) VALUES ('San Vicente')--12
 INSERT INTO CITY (city) VALUES ('Usulutan')--13
 INSERT INTO CITY (city) VALUES ('Chalatenango')--14
 
---LA LIBERTAD
+	--LA LIBERTAD
 INSERT INTO ADDRESS([state],id_city) VALUES ('Santa Tecla',1)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Nuevo Cuscatlan',1)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Chiltiupán',1)
@@ -157,7 +158,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('Teotepeque',1)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Tepecoyo',1)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Zaragoza',1)
 
---SONSONATE
+	--SONSONATE
 INSERT INTO ADDRESS([state],id_city) VALUES ('Sonsonate',2)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Acajutla',2)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Armenia',2)
@@ -175,7 +176,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('Santa Isabel Ishuatán',2)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Santo Domingo de Guzmán',2)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Sonzacate',2)
 
---MORAZAN
+	--MORAZAN
 INSERT INTO ADDRESS([state],id_city) VALUES ('San Francisco Gotera',3)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Arambala',3)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Cacaopera',3)
@@ -203,7 +204,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('Torola',3)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Yamabal',3)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Yoloaiquín',3)
 
---AHUACHAPAN
+	--AHUACHAPAN
 INSERT INTO ADDRESS([state],id_city) VALUES ('Ahuachapán',4)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Apaneca',4)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Atiquizaya',4)
@@ -217,7 +218,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('San Pedro Puxtla',4)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Tacuba',4)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Turín',4)
 
---LA UNION
+	--LA UNION
 INSERT INTO ADDRESS([state],id_city) VALUES ('La Unión ',5)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Anamorós',5)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Bolívar',5)
@@ -237,7 +238,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('Santa Rosa de Lima',5)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Yayantique',5)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Yucuaiquín',5)
 
---CABAÑAS
+	--CABAÑAS
 INSERT INTO ADDRESS([state],id_city) VALUES ('Sensuntepeque',6)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Cinquera',6)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Dolores',6)
@@ -248,7 +249,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('San Isidro',6)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Tejutepeque',6)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Victoria',6)
 
---CUSCATLAN
+	--CUSCATLAN
 INSERT INTO ADDRESS([state],id_city) VALUES ('Cojutepeque',7)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Candelaria',7)
 INSERT INTO ADDRESS([state],id_city) VALUES ('El Carmen',7)
@@ -266,7 +267,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('Santa Cruz Michapa',7)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Suchitoto',7)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Tenancingo',7)	
 
---SANTA ANA
+	--SANTA ANA
 INSERT INTO ADDRESS([state],id_city) VALUES ('Santa Ana ',8)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Candelaria de la Frontera',8)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Chalchuapa',8)	
@@ -282,7 +283,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('Santiago de la Frontera',8)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Texistepeque',8)
 
 
---SAN SALVADOR
+	--SAN SALVADOR
 INSERT INTO ADDRESS([state],id_city) VALUES ('San Salvador',9)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Aguilares',9)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Apopa',9)
@@ -303,7 +304,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('Santo Tomás',9)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Soyapango',9)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Tonacatepeque',9)
 
---SAN MIGUEL
+	--SAN MIGUEL
 INSERT INTO ADDRESS([state],id_city) VALUES ('San Miguel',10)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Carolina',10)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Chapeltique',10)
@@ -325,7 +326,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('San Rafael Oriente',10)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Sesori',10)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Uluazapa',10)
 
---LA PAZ
+	--LA PAZ
 INSERT INTO ADDRESS([state],id_city) VALUES ('Zacatecoluca ',11)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Cuyultitán',11)
 INSERT INTO ADDRESS([state],id_city) VALUES ('El Rosario',11)
@@ -349,7 +350,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('Santa María Ostuma',11)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Santiago Nonualco',11)	
 INSERT INTO ADDRESS([state],id_city) VALUES ('Tapalhuaca',11)
 
---SAN VICENTE
+	--SAN VICENTE
 INSERT INTO ADDRESS([state],id_city) VALUES ('San Vicente ',12)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Apastepeque',12)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Guadalupe',12)	
@@ -364,7 +365,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('Tecoluca',12)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Tepetitán',12)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Verapaz',12)
 
---USULUTAN
+	--USULUTAN
 INSERT INTO ADDRESS([state],id_city) VALUES ('Usulután',13)	
 INSERT INTO ADDRESS([state],id_city) VALUES ('Alegría',13)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Berlín',13)	
@@ -389,7 +390,7 @@ INSERT INTO ADDRESS([state],id_city) VALUES ('Santa María',13)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Santiago de María',13)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Tecapán',13)
 
---CHALATENANGO
+	--CHALATENANGO
 INSERT INTO ADDRESS([state],id_city) VALUES ('Chalatenango',14)	
 INSERT INTO ADDRESS([state],id_city) VALUES ('Agua Caliente',14)
 INSERT INTO ADDRESS([state],id_city) VALUES ('Arcatao',14)	
