@@ -139,14 +139,14 @@ INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES ('EPOC')
 INSERT INTO CHRONICLE_DISEASE (chronicle_disease) VALUES ('Insuficiencia Cardiaca')
 
 --Insertano efectos secundarios
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('fatiga')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('dolor y/o sensibilidad en la inyeccion')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('dolor de cabeza')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('enrojecimiento en la inyeccion')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('fiebre')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('anafilaxia')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('artralgia')
-INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('mialga')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Fatiga')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Dolor y/o sensibilidad en la inyeccion')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Folor de cabeza')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Enrojecimiento en la inyeccion')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Fiebre')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Anafilaxia')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Artralgia')
+INSERT INTO SECUNDARY_EFFECT (secundary_effect) VALUES ('Mialga')
 
 --Insertando Departamentos
 INSERT INTO [STATE] ([state]) VALUES ('La Libertad')--1
